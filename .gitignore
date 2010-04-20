@@ -1,0 +1,6 @@
+*.pyc
+bin/*
+lib/*
+include/*
+inbucha/static/icons/testicons/*
+*.tmp*

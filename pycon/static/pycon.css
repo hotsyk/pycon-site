@@ -1,0 +1,116 @@
+h1 {
+	font-size:2em;
+	line-height:1;
+	margin-bottom:0.5em;
+	font-weight:bold;
+	}
+h2 {
+	font-size:1.75em;
+	line-height:1;
+	margin-bottom:0.4em;
+	font-weight:bold;
+	}
+h3 {
+	font-size:1.5em;
+	line-height:1;
+	margin-bottom:0.3em;
+	font-weight:bold;
+	}
+h4 {
+	font-size:1.3em;
+	line-height:1;
+	margin-bottom:0.2em;
+	font-weight:bold;
+	}
+h5 {
+	font-size:1.2em;
+	font-weight:bold;
+	line-height:1;
+	margin-bottom:0.1em;
+	}
+h6 {
+	font-size:1em;
+	font-weight:bold;
+	line-height:1;
+	}
+	
+
+
+
+body {background:#fff;
+      margin:0;
+      scrollbar-3dlight-color:#222;
+      scrollbar-arrow-color:#FFF;
+      scrollbar-base-color:#000;
+      scrollbar-darkshadow-color:#222;
+      scrollbar-face-color:#000;
+      scrollbar-highlight-color:#000;
+      scrollbar-shadow-color:#000}
+
+#outer
+    {position: absolute;
+     top: 50%;
+     left: 0px;
+     width: 100%;
+     height: 1px;}
+
+#inner
+    {margin-left: -250px;
+     position: absolute;
+     top: -150px;
+     left: 50%;
+     width: 700px;
+     height: 300px}
+
+
+
+.bgtext
+        {font-size: 100px;
+         position:absolute;
+         top:20px;
+         left:-120px;
+         right:-80px;
+		 font-weight: 900;}
+
+.bgtext-tagline
+        {font-size: 60px;
+         position:absolute;
+         top:180px;
+         left:-20px;
+         right:-80px}
+.bgtext-dates
+        {font-size: 70px;
+         position:absolute;
+         top:350px;
+         left:-110px;
+         right:-80px}
+		 
+.bgtext, .footertext, .bgtext-tagline, .bgtext-dates
+        {color:#436B9C;
+         font-family:verdana, helvetica, sans serif;}
+
+.footertext {font-size:12px;
+             position:absolute;
+             top:320px;
+             text-align:center;
+             width:500px;}
+
+	
+	
+.infowindow {
+	width: 200px;
+	min-height: 200px;
+}	
+
+.infowindow-address {
+	width: 200px;
+}
+
+.infowindow-phone-image {
+   width: 40px;
+   float: left;
+}
+.infowindow-phone {
+   width: 140px;
+   float: right;	
+}

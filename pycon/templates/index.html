@@ -1,0 +1,27 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% trans "PyCon Ukraine" %}</title>
+
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}print.css" type="text/css" media="print">
+	<link rel="stylesheet" href="{{ MEDIA_URL }}pycon.css" type="text/css" media="screen, projection">
+
+    <!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/slidebox.css" type="text/css" media="screen" /> 	
+</head> 
+<body>
+        <div id="outer">
+            <div id="inner">
+
+                <div class="bgtext">{% trans "PyCon Ukraine" %}</div>
+                {% comment %}<div class="bgtext-tagline">{% trans "import antigravity" %}</div>{% endcomment %}
+				<div class="bgtext-dates">{% trans "This Fall, Kyiv, Ukraine" %}</div>
+            </div>
+        </div>
+</html> 
+
