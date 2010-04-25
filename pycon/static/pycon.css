@@ -245,7 +245,7 @@ ul.menu li, ul.menu li a{
     font-size:30px;
 	padding: 0;
 	font-weight: 900;
-	float: right;
+	text-align: left;
 	margin: 0;
 }
  .info h3{
@@ -254,7 +254,7 @@ ul.menu li, ul.menu li a{
     font-size:24px;
     padding: 0;
 	font-weight: 900;
-	float: right;
+	text-align: left;
 	margin: 0;
 }
 
