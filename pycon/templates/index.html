@@ -10,18 +10,176 @@
     <link rel="stylesheet" href="{{ MEDIA_URL }}screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="{{ MEDIA_URL }}print.css" type="text/css" media="print">
 	<link rel="stylesheet" href="{{ MEDIA_URL }}pycon.css" type="text/css" media="screen, projection">
-
+    <script type='text/javascript' src='{{MEDIA_URL}}js/jquery-1.3.2.min.js'></script>
     <!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}ie.css" type="text/css" media="screen, projection"><![endif]-->
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/slidebox.css" type="text/css" media="screen" /> 	
+	<script type="text/javascript" src="{{MEDIA_URL}}js/easySlider.js"></script>
+	
+<script type='text/javascript' >
+$(function () {
+    $('.date_has_event').each(function () {
+        var trigger = $(this);
+        var popup = $('.events ul', this).css('opacity', 0);
+ 
+        $([trigger.get(0), popup.get(0)]).click(function () {
+            $('#event_description').html(popup.html());          
+        })
+      
+    });
+});	
+
+$(document).ready(function(){
+   $("#slider").easySlider({
+        prevText: '&nbsp;&larr;&nbsp;',
+        nextText: '&nbsp;&rarr;&nbsp;',
+        orientation: 'horizontal',
+		continuous: false
+    });
+});
+
+</script>	
 </head> 
 <body>
-        <div id="outer">
-            <div id="inner">
+       <div class="container">
+       	    <div class="span-2">
+       	    	<div class="logo">
+       	    	   <img src="{{ MEDIA_URL }}images/logo.png" />
+				   <h1>PyCon Ukraine</h1>
+				</div>
+       	    </div>
+                <div class="span-1">
+                       {% comment %} <div class="profile">
+                            <a href="#">sign up</a>                        	
+                        	<a href="#">login</a>
+                        </div>
+						{% endcomment %}
+						<div class="info">
+							<h2>October, 23-24</h2>
+							<h3>Kyiv, Ukraine</h3>
+						</div>
+                    </div>
+			{% comment %}			
+			<div class="span-3">
+				<ul class="menu">
+					<li><a href="#">About</a></li>
+					<li><a href="#">Registration</a></li>
+					<li><a href="#">Speakers</a></li>
+					<li><a href="#">Contacts</a></li>
+				</ul>
+			</div>
+			{% endcomment %}
+			
+             <div class="span-3">
+                <div class="slider">
+                	<div class="span-1">
+                		<h1>Timeline</h1>
+						<h3>June 1, 2010<br />Call for papers</h3>
+						<br />
+                        <h3>July 1, 2010<br />
+                        Early bird registration starts</h3>						
+                	</div>
+                    <div class="span-1">
+                        <h1>Points of interest</h1>
+                        <h3>Python :)</h3>
+						<h3>Django and other webframeworks</h3>
+						<h3>SQL and NoSQL databases</h3>
+						<h3>GIS</h3>
+						<h3>Highload</h3>
+						<h3>and many others</h3>
+                    </div>
 
-                <div class="bgtext">{% trans "PyCon Ukraine" %}</div>
-                {% comment %}<div class="bgtext-tagline">{% trans "import antigravity" %}</div>{% endcomment %}
-				<div class="bgtext-dates">{% trans "This Fall, Kyiv, Ukraine" %}</div>
+                    <div class="span-1">
+
+                        <h1>Contacts</h1>
+                        <h3>Twitter: <a href="http://twitter.com/maxua">@maxua</a>, <a href="http://twitter.com/gotsyk">@gotsyk</a></h3>
+                        <h3>Tag in twitter: <a href="http://twitter.com/search?q=pykyiv%20OR%20uapycon">#uapycon</a></h3>
+						<h3><a href="http://groups.google.com/group/uapycon">Mailing list</a></h3>
+						<h3>Email: <a href="mailto:uapycon@hotsyk.com">uapycon@hotsyk.com</a> </h3>
+                    </div>					
+                </div>
             </div>
-        </div>
+			
+			
+		<!-- Columns -->
+		<div class="span-3">
+		 <div class="span-1">
+            <div class="news">
+            	<div class="header">
+            		News
+            	</div>
+				{% for item in news %}
+				    
+				{% endfor %}
+				<div class="newsitem">
+					<div class="newsdate">2010.05.01</div>
+					<div class="newstitle">Missing PyCamp? Welcome, PyCon!</div>
+					<div class="newscontent">At the beginning of the 2010, the conference PyCamp involved about 220 participants from the Ukraine, Russia and Belarus into the magic python world.
+					   <br />We've desided to continue this great happenings and today we are starting the preparation to launch the biggest python conference in Kyiv this Fall.
+					   <br />
+					   <br />We are open for any proposals. Let's make the biggest most impressive python event together!
+					   </div>
+					<div class="newscomments"></div>
+					<div class="newsshare"></div>
+				</div>
+            </div>             
+         </div>      
+					
+		 <div class="span-1">
+            <div class="calendar">
+                <div class="header">
+                    Calendar
+                </div>
+		 <div id="event_description">
+          </div>    
+		 <br />
+        <div id="slider">
+        	{% include "calendar.html" %}
+        </div>		
+			
+            </div>             
+         </div>      
+					
+		 <div class="span-1">
+            <div class="reactions">
+                <div class="header">
+                    Reactions
+                </div>
+                <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+                <script>
+                new TWTR.Widget({
+                  version: 2,
+                  type: 'search',
+                  search: 'pykyiv OR uapycon',
+                  interval: 6000,
+                  title: 'PyCon Ukraine',
+                  subject: 'October 2010',
+                  width: 360,
+                  height: 300,
+                  theme: {
+                    shell: {
+                      background: '#ffffff',
+                      color: '#436B9C'
+                    },
+                    tweets: {
+                      background: '#ffffff',
+                      color: '#444444',
+                      links: '#436B9C'
+                    }
+                  },
+                  features: {
+                    scrollbar: false,
+                    loop: true,
+                    live: true,
+                    hashtags: true,
+                    timestamp: true,
+                    avatars: true,
+                    behavior: 'default'
+                  }
+                }).render().start();
+                </script>
+            </div>             
+
+        </div>   
+		</div>   
+       </div>
 </html> 
 
