@@ -57,13 +57,13 @@ body {
 -------------------------------------------------------------- */
 
 /* Sets up basic grid floating and margin. */
-div.span-1, div.span-2, div.span-3 {float:left;margin-right: 5px;padding:5px;}
+div.span-1, div.span-2, div.span-3 {float:left;margin-right: 5px;padding:5px 5px 5px 0;}
 
 /* The last column in a row needs this class. */
 div.last { margin-right: 0; }
 
 /* Use these classes to set the width of a column. */
-.span-1  { width: 350px;}
+.span-1  { width: 355px;}
 .span-2  { width: 720px;}
 .span-3, div.span-3 { width: 1100px; margin: 0; }
 
@@ -382,13 +382,13 @@ td.today:hover {
     font-family: helvetica,arial,sans-serif;
     font-size:24px; 
 }
-#slider ul, #slider li{
+#slidercalendar ul, #slidercalendar li{
     margin:0;
     padding:0;
 	 width:340px;
     list-style:none;
     }
-#slider, #slider li{ 
+#slidercalendar, #slidercalendar li{ 
     width:340px;
     overflow:hidden; 
     }
