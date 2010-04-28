@@ -44,34 +44,40 @@ $(document).ready(function(){
 </head> 
 <body>
        <div class="container">
-       	    <div class="span-2">
+       	    <div class="span-5">
        	    	<div class="logo">
        	    	   <img src="{{ MEDIA_URL }}images/logo.png" />
 				   <h1>PyCon Ukraine</h1>
+                        <div class="info">
+                            <h2>import antigravity</h2>                         
+                            <h3>October, 23-24</h3>
+                            <h3><a href="http://maps.google.com.ua/maps/ms?msa=0&msid=112046446547915647013.0004507fac7918fbc6c14&hl=en&gl=ua&ved=0CBoQkAUwAA&ei=4-rXS4KyI9ag_Aayl5X5DQ&sig2=GppopIvL4LKQ2iQ_7Jn5zQ&ie=UTF8&ll=50.33823,30.894928&spn=0.016818,0.043817&z=15&iwloc=lyrftr:msid:112046446547915647013.0004507fac7918fbc6c14,0004508298126d30fe7f3,,,0,-31">Kyiv, Ukraine</a></h3>
+                        </div>				   
 				</div>
        	    </div>
-                <div class="span-1">
-                       {% comment %} <div class="profile">
-                            <a href="#">sign up</a>                        	
-                        	<a href="#">login</a>
+            <div class="span-4">
+                {% comment %}<ul class="menu">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Registration</a></li>
+                    <li><a href="#">Speakers</a></li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+				{% endcomment %}
+            </div>			
+                <div class="span-4">
+                	{% comment %}
+                        <div class="organizers">
+                        <h3><a href="http://twitter.com/maxua">@maxua</a>, <a href="http://twitter.com/gotsyk">@gotsyk</a></h3>
+                        <h3><a href="http://twitter.com/search?q=pykyiv%20OR%20uapycon">#uapycon</a></h3>
+                        <h3><a href="http://groups.google.com/group/uapycon">Mailing list</a></h3>
+                        <h3><a href="mailto:uapycon@hotsyk.com">uapycon@hotsyk.com</a> </h3>
+						<h3><a href="http://pycamp.org.ua/">PyCamp Kyiv</a> </h3>
                         </div>
-						{% endcomment %}
-						<div class="info">
-                            <h2>import antigravity</h2>							
-							<h3>October, 23-24</h3>
-							<h3>Kyiv, Ukraine</h3>
-						</div>
+					{% endcomment %}	
+
                     </div>
-			{% comment %}			
-			<div class="span-3">
-				<ul class="menu">
-					<li><a href="#">About</a></li>
-					<li><a href="#">Registration</a></li>
-					<li><a href="#">Speakers</a></li>
-					<li><a href="#">Contacts</a></li>
-				</ul>
-			</div>
-			{% endcomment %}
+	
+
 			
              <div class="span-3">
                 <div class="slider">
@@ -117,7 +123,7 @@ $(document).ready(function(){
 				<div class="newsitem">
 					<div class="newsdate">2010.05.01</div>
 					<div class="newstitle">Missing PyCamp? Welcome, PyCon!</div>
-					<div class="newscontent">At the beginning of the 2010, the conference PyCamp gathered about 220 participants from the Ukraine, Russia and Belarus into the magical python world.
+					<div class="newscontent">At the beginning of the 2010, the conference PyCamp gathered about 220 participants from the Ukraine, Russia and Belarus into the magical Python world.
                        <br />We decided to continue this great happening and today we are starting the preparation to the biggest python conference in Kyiv. This Fall. 
 					   <br />
 					   <br />We are open for proposals and your feedback. Let's make it the most impressive Python event together! 

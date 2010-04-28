@@ -52,12 +52,11 @@ body {
   padding: 5px;   
 }
 
-
 /* Columns
 -------------------------------------------------------------- */
 
 /* Sets up basic grid floating and margin. */
-div.span-1, div.span-2, div.span-3 {float:left;margin-right: 5px;padding:5px 5px 5px 0;}
+div.span-1, div.span-2, div.span-3, div.span-4,  div.span-5 {float:left;margin-right: 5px;padding:5px 5px 5px 0;}
 
 /* The last column in a row needs this class. */
 div.last { margin-right: 0; }
@@ -66,8 +65,8 @@ div.last { margin-right: 0; }
 .span-1  { width: 355px;}
 .span-2  { width: 720px;}
 .span-3, div.span-3 { width: 1100px; margin: 0; }
-
-
+.span-4, div.span-4  { width: 215px; margin-right:0px; padding-right:0px; }
+.span-5  { width: 660px;}
 /* Add these to a column to append empty cols. */
 .append-1  { padding-right: 370px;}
 .append-2  { padding-right: 740px;}
@@ -176,7 +175,7 @@ hr.space {
     font-family: helvetica,arial,sans-serif;
     font-size:70px;
     color:#436B9C;
-    padding:25px 0px;
+    padding:0px 0px 0px 0px;
     margin:0px;
 	font-weight: 900;
 }
@@ -206,13 +205,13 @@ hr.space {
 	}
 
 ul.menu {
-	width: 720px;
+	width: 120px;
 	list-style: none;
     margin: 0px;	
 	padding: 0;
 }	
 ul.menu li, ul.menu li a{
-	float: left;
+	
 	color: #436B9C;
 	background-color: #fff;
 	padding: 5px 15px 5px 0;
@@ -222,7 +221,8 @@ ul.menu li, ul.menu li a{
 }
 
  ul.menu a:hover{
-    color: #F36BAA;
+    background-color: #436B9C;
+    color:#FFF; 
 }
 .profile {  width: 100%;}
 .profile, .profile a, .profile a:hover {
@@ -233,11 +233,40 @@ ul.menu li, ul.menu li a{
 	padding:5px;
 	
 }
+.organizers {
+	width: 200px;
+    float: right;	
+	text-align: right;
+	padding:0px;
+}
+.organizers h1, .organizers h3 {
+    color: #436B9C;
+    font-family: helvetica,arial,sans-serif;    
+}
+.organizers h1{
+    font-size: 16px;
+}
+.organizers h3{
+    font-size: 14px;
+}
+.organizers a, .organizers a:hover {
+    color: #436B9C;
+    font-family: helvetica,arial,sans-serif;
+    font-size:14px;
+	padding: 0px;
+}
+.organizers a:hover {
+    font-family: helvetica,arial,sans-serif;
+    font-size:14px;
+    background-color: #436B9C;
+    color:#FFF;	
+}
 .info{
-    float: right;
+    float: left;
     color: #436B9C;
     font-family: helvetica,arial,sans-serif;
     font-size:30px;
+	
 }
  .info h2{
     color: #436B9C;
@@ -248,7 +277,7 @@ ul.menu li, ul.menu li a{
 	text-align: left;
 	margin: 0;
 }
- .info h3{
+ .info h3, .info h3 a, .info h3 a:hover{
     color: #436B9C;
     font-family: helvetica,arial,sans-serif;
     font-size:24px;
