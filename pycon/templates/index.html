@@ -1,196 +1,214 @@
 {% load i18n %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{% trans "PyCon Ukraine" %}</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 
-    <!-- Framework CSS -->
-    <link rel="stylesheet" href="{{ MEDIA_URL }}screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="{{ MEDIA_URL }}print.css" type="text/css" media="print">
-	<link rel="stylesheet" href="{{ MEDIA_URL }}pycon.css" type="text/css" media="screen, projection">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}style.css" media="screen" />
+	<title>PyCon Ukraine</title>
     <script type='text/javascript' src='{{MEDIA_URL}}js/jquery-1.3.2.min.js'></script>
-    <!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA_URL }}ie.css" type="text/css" media="screen, projection"><![endif]-->
-	<script type="text/javascript" src="{{MEDIA_URL}}js/easySlider.js"></script>
-	<script type="text/javascript" src="{{MEDIA_URL}}js/jquery.corner.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}js/jquery.corner.js"></script>
 	
-<script type='text/javascript' >
-$(function () {
-    $('.date_has_event').each(function () {
-        var trigger = $(this);
-        var popup = $('.events ul', this).css('opacity', 0);
- 
-        $([trigger.get(0), popup.get(0)]).click(function () {
-            $('#event_description').html(popup.html());          
-        })
-      
-    });
-});	
+</head>
 
-$(document).ready(function(){
-   $("#slidercalendar").easySlider({
-        prevText: '&nbsp;&larr;&nbsp;',
-        nextText: '&nbsp;&rarr;&nbsp;',
-        orientation: 'horizontal',
-		continuous: false
-    });
-	$('.slider').corner("round 4px").parent().css('padding', '2px').corner("round 5px");
-	$('.header').corner("round 4px").parent().css('padding', '2px').corner("round 5px");
-	
-});
-
-</script>	
-</head> 
 <body>
-       <div class="container">
-       	    <div class="span-5">
-       	    	<div class="logo">
-       	    	   <img src="{{ MEDIA_URL }}images/logo.png" />
-				   <h1>PyCon Ukraine</h1>
-                        <div class="info">
-                            <h2>import antigravity</h2>                         
-                            <h3>October, 23-24</h3>
-                            <h3><a href="http://maps.google.com.ua/maps/ms?msa=0&msid=112046446547915647013.0004507fac7918fbc6c14&hl=en&gl=ua&ved=0CBoQkAUwAA&ei=4-rXS4KyI9ag_Aayl5X5DQ&sig2=GppopIvL4LKQ2iQ_7Jn5zQ&ie=UTF8&ll=50.33823,30.894928&spn=0.016818,0.043817&z=15&iwloc=lyrftr:msid:112046446547915647013.0004507fac7918fbc6c14,0004508298126d30fe7f3,,,0,-31">Kyiv, Ukraine</a></h3>
-                        </div>				   
+
+<div id="site-wrapper">
+
+	<div id="header">
+
+		<div id="top">
+			<div class="left" id="logo">
+				<a href="/"><img src="{{ MEDIA_URL }}images/logo.png" /></a><br />
+			</div>
+
+			<div class="left" id="logo-title">
+                  <h1>PyCon Ukraine</h1>
+                  <h2>import antigravity</h2>                         
+                  <h3>October, 23-24. Kyiv, Ukraine</h3>
+				<div class="clearer">&nbsp;</div>
+			</div>
+			<div class="right" id="flesh-announces">
+                  <h4>stay updated - join our <a href="http://groups.google.com/group/uapycon">mailing list</a></h4>
+				  <h4>join pycon ukraine buzz in twitter <a href="http://twitter.com/#search?q=uapycon">#uapycon</a></h4>
+			</div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+        {% comment %}
+		<div class="navigation" id="sub-nav">
+			<ul class="tabbed">
+				<li class="current-tab"><a href="#">About</a></li>
+                <li><a href="#">Speakers</a></li>
+                <li><a href="#">Sponsors</a></li>
+                <li><a href="#">Registration</a></li>
+                <li><a href="#">Programm</a></li>
+                <li><a href="#">Participant's guide</a></li>
+                <li><a href="#">Contact</a></li>
+			</ul>
+			<div class="clearer">&nbsp;</div>
+		</div>
+		{% endcomment %}
+	</div>
+
+	<div id="splash">
+		<div class="col3 left">
+			<h2 class="label label-green">Points of interest</h2>
+			<ul class="nice-list">
+			<li>Python</li>
+			<li>Django and other webframeworks</li>
+			<li>SQL and NoSQL databases</li>
+			<li>GIS</li>
+			<li>Highload</li>
+			<li>and many others</li>
+			</ul>
+		</div>
+		<div class="col3-mid left">
+			<h2 class="label label-orange">Speakers</h2>
+			<p class="quiet large">Michael Trier</p>
+			<p><img src="{{MEDIA_URL}}images/people/mtrier240x120.png" alt="" class="bordered" /></p>
+			<p><em></em></p>
+		</div>
+
+		<div class="col3 right">
+			<h2 class="label label-blue">Contacts</h2>
+			<ul class="nice-list">
+			                     <li><a href="http://twitter.com/maxua">@maxua</a></li>
+                        <li><a href="http://twitter.com/gotsyk">@gotsyk</a></li>
+                        <li><a href="http://twitter.com/#search?q=uapycon">#uapycon</a></li>
+                        <li><a href="http://groups.google.com/group/uapycon">mailing list</a></li>
+                        <li><a href="mailto:uapycon@hotsyk.com">uapycon@hotsyk.com</a></li>
+			</ul>
+		</div>
+		<div class="clearer">&nbsp;</div>
+	</div>
+	<div class="main" id="main-two-columns">
+		<div class="left" id="main-content">
+			<div class="section">
+				<div class="section-title">News and updates</div>
+				<div class="section-content">
+					<div class="post">
+						<div class="post-title"><h2>Missing PyCamp? Welcome, PyCon!</h2></div>
+						<div class="post-date">Wednesday, May 19, 2010 by Volodymyr Hotsyk</div>
+						<div class="post-body">
+							<p>At the beginning of the 2010, the conference PyCamp gathered about 220 participants from the Ukraine, Russia and Belarus into the magical Python world. 
+                            We decided to continue this great happening and today we are starting the preparation to the biggest python conference in Kyiv. This Fall. </p>
+                            <p>We are open for proposals and your feedback. Let's make it the most impressive Python event together!</p>
+						</div>
+					</div>
+					<div class="content-separator"></div>
+					{% comment %}
+					<div class="col3 left">
+						<div class="column-content">
+							<div class="post">
+								<h3><a href="#">Article title</a></h3>
+								<p>Integer diam elit, condi mentum ac semper ut, tincidunt non diam. Ut congue at commodo aenean euismod tincidunt lorem euismod.</p>
+								<a href="#" class="more">Read more &#187;</a>
+							</div>
+						</div>
+					</div>
+					<div class="col3 col3-mid left">
+						<div class="column-content">
+							<div class="post">
+								<h3><a href="#">Second Article Title</a></h3>
+								<p>Sed congue lacinia leo, sed dignissim odio pharetra vel. Fusce a dignissim dui. Fusce semper porttitor enim dapibus venenatis.</p>
+								<a href="#" class="more">Read more &#187;</a>
+							</div>
+						</div>
+					</div>
+					<div class="col3 right">
+						<div class="column-content">
+							<div class="post">
+								<h3><a href="#">Third title</a></h3>
+								<p>Sed auctor hendrerit eros eu eleifend. Cras hendrerit iaculis sodales. Pellentesque interdum rhoncus magna.</p>
+								<a href="#" class="more">Read more &#187;</a>
+							</div>
+						</div>
+					</div>
+					{% endcomment %}
+					<div class="clearer">&nbsp;</div>
 				</div>
-       	    </div>
-            <div class="span-4">
-                {% comment %}<ul class="menu">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Registration</a></li>
-                    <li><a href="#">Speakers</a></li>
-                    <li><a href="#">Contacts</a></li>
-                </ul>
-				{% endcomment %}
-            </div>			
-                <div class="span-4">
-                	{% comment %}
-                        <div class="organizers">
-                        <h3><a href="http://twitter.com/maxua">@maxua</a>, <a href="http://twitter.com/gotsyk">@gotsyk</a></h3>
-                        <h3><a href="http://twitter.com/search?q=pykyiv%20OR%20uapycon">#uapycon</a></h3>
-                        <h3><a href="http://groups.google.com/group/uapycon">Mailing list</a></h3>
-                        <h3><a href="mailto:uapycon@hotsyk.com">uapycon@hotsyk.com</a> </h3>
-						<h3><a href="http://pycamp.org.ua/">PyCamp Kyiv</a> </h3>
-                        </div>
-					{% endcomment %}	
-
-                    </div>
-	
-
-			
-             <div class="span-3">
-                <div class="slider">
-                	<div class="span-1">
-                		<h1>Timeline</h1>
-						<h3>June 1, 2010<br />Call for papers</h3>
-						<br />
-                        <h3>July 1, 2010<br />
-                        Early bird registration starts</h3>						
-                	</div>
-                    <div class="span-1">
-                        <h1>Points of interest</h1>
-                        <h3>Python :)</h3>
-						<h3>Django and other webframeworks</h3>
-						<h3>SQL and NoSQL databases</h3>
-						<h3>GIS</h3>
-						<h3>Highload</h3>
-						<h3>and many others</h3>
-                    </div>
-
-                    <div class="span-1">
-
-                        <h1>Contacts</h1>
-                        <h3>Twitter: <a href="http://twitter.com/maxua">@maxua</a>, <a href="http://twitter.com/gotsyk">@gotsyk</a></h3>
-                        <h3>Tag in twitter: <a href="http://twitter.com/search?q=pykyiv%20OR%20uapycon">#uapycon</a></h3>
-						<h3><a href="http://groups.google.com/group/uapycon">Mailing list</a></h3>
-						<h3>Email: <a href="mailto:uapycon@hotsyk.com">uapycon@hotsyk.com</a> </h3>
-                    </div>					
-                </div>
-            </div>
-			
-			
-		<!-- Columns -->
-		<div class="span-3">
-		 <div class="span-1">
-            <div class="news">
-            	<div class="header">
-            		News
-            	</div>
-				{% for item in news %}
-				    
-				{% endfor %}
-				<div class="newsitem">
-					<div class="newsdate">2010.05.01</div>
-					<div class="newstitle">Missing PyCamp? Welcome, PyCon!</div>
-					<div class="newscontent">At the beginning of the 2010, the conference PyCamp gathered about 220 participants from the Ukraine, Russia and Belarus into the magical Python world.
-                       <br />We decided to continue this great happening and today we are starting the preparation to the biggest python conference in Kyiv. This Fall. 
-					   <br />
-					   <br />We are open for proposals and your feedback. Let's make it the most impressive Python event together! 
-					   </div>
-					<div class="newscomments"></div>
-					<div class="newsshare"></div>
+			</div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+		<div class="right sidebar" id="sidebar">
+			<div class="section">
+				<div class="section-title">PyCon Buzz</div>
+				<div class="section-content">
+					{% block twitter %}
+		          <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+		            <script>
+		                new TWTR.Widget({
+		                  version: 2,
+		                  type: 'search',
+		                  search: 'pykyiv OR pycamp OR pycon OR uapycon',
+		                  interval: 6000,
+		                  title: '#uapycon',
+		                  width: 210,
+		                  height: 270,
+		                  theme: {
+		                    shell: {
+		                      background: '#436B9C',
+		                      color: '#ffffff'
+		                    },
+		                    tweets: {
+		                      background: '#ffffff',
+		                      color: '#444444',
+		                      links: '#056087'
+		                    }
+		                  },
+		                  features: {
+		                    scrollbar: false,
+		                    loop: true,
+		                    live: true,
+		                    hashtags: true,
+		                    timestamp: true,
+		                    avatars: true,
+		                    behavior: 'default'
+		                  }
+		                }).render().start();
+		                </script>
+		            {% endblock twitter %}
 				</div>
-            </div>             
-         </div>      
-					
-		 <div class="span-1">
-            <div class="calendar">
-                <div class="header">
-                    Calendar
-                </div>
-		 <div id="event_description">
-          </div>    
-		 <br />
-        <div id="slidercalendar">
-        	{% include "calendar.html" %}
-        </div>		
-			
-            </div>             
-         </div>      
-					
-		 <div class="span-1">
-            <div class="reactions">
-                <div class="header">
-                    Reactions
-                </div>
-                <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-                <script>
-                new TWTR.Widget({
-                  version: 2,
-                  type: 'search',
-                  search: 'pykyiv OR uapycon',
-                  interval: 6000,
-                  title: 'PyCon Ukraine',
-                  subject: 'October 2010',
-                  width: 360,
-                  height: 300,
-                  theme: {
-                    shell: {
-                      background: '#ffffff',
-                      color: '#436B9C'
-                    },
-                    tweets: {
-                      background: '#ffffff',
-                      color: '#444444',
-                      links: '#436B9C'
-                    }
-                  },
-                  features: {
-                    scrollbar: false,
-                    loop: true,
-                    live: true,
-                    hashtags: true,
-                    timestamp: true,
-                    avatars: true,
-                    behavior: 'default'
-                  }
-                }).render().start();
-                </script>
-            </div>             
 
-        </div>   
-		</div>   
-       </div>
-</html> 
+			</div>
+			<div class="section">
+				<div class="section-title">Sponsors and partners</div>
+				<div class="section-content">
+					<ul class="nice-list">
+						<li>
+							<div class="left"><a href="#">Python Software Foundation</a></div>
+							<div class="clearer">&nbsp;</div>
+						</li>
+						<li>
+							<div class="left"><a href="#">Developers.org.ua</a></div>
+							<div class="clearer">&nbsp;</div>
+						</li>
+						<li>
+							<div class="left"><a href="#">42coffeecups.com</a></div>
+							<div class="clearer">&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+		</div>
+		<div class="clearer">&nbsp;</div>
+	</div>
+	<div id="footer">
+		<div class="left" id="footer-left">
+			<p>&copy; 2010 PyCon Ukraine. All rights Reserved</p>
+			<p class="quiet"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></p>
+			<div class="clearer">&nbsp;</div>
+		</div>
+		<div class="right" id="footer-right">
+			<p class="large"><a href="/">Home</a> <span class="text-separator">|</span> <a href="#">News</a> <span class="text-separator">|</span> <a href="#">About</a> <span class="text-separator">|</span> <a href="#">Contacts</a> <span class="text-separator">|</span> <a href="#top" class="quiet">Page Top &uarr;</a></p>
+		</div>
+		<div class="clearer">&nbsp;</div>
+	</div>
+</div>
 
+</body>
+</html>
