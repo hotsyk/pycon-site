@@ -2,5 +2,12 @@
 bin/*
 lib/*
 include/*
-inbucha/static/icons/testicons/*
 *.tmp*
+src/*
+local_settings.py
+new-des/*
+pycon/theme3/*
+pip-log.txt
+.project
+.pydevproject
+.settings/*

@@ -1,0 +1,11 @@
+-e svn+http://code.djangoproject.com/svn/django/branches/releases/1.2.X#egg=django
+coverage
+mock
+BeautifulSoup
+jogging
+sorl-thumbnail
+-e hg+http://bitbucket.org/andrewgodwin/south/#egg=south
+-e git+http://github.com/montylounge/django-sugar.git#egg=django-sugar
+-e git+http://github.com/robhudson/django-debug-toolbar.git#egg=django-debug-toolbar
+mysql-python
+PIL

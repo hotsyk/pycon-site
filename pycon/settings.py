@@ -14,7 +14,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'inbucha.db',                      # Or path to database file if using sqlite3.
+        'NAME': 'pycon.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -33,14 +33,12 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'uk-ua'
+LANGUAGE_CODE = 'en-us'
 
 ugettext = lambda s: s # dummy ugettext function, as django's docs say
 
 LANGUAGES = (
     ('en-us', ugettext('English')),
-    ('ru-ru', ugettext('Russian')),
-    ('uk-ua', ugettext('Ukrainian')),
 )
 
 SITE_ID = 1
@@ -98,6 +96,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'jogging.middleware.LoggingMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -114,13 +113,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'sorl.thumbnail',
-    'rosetta',
-    'transmeta',
+    'south',
+    'jogging',
     'core',
 )
 
-try:
-    from local_settings import *
-except:
-    pass
+from local_settings import *
+from logging_settings import *
 
