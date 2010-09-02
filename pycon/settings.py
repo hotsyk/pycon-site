@@ -124,5 +124,5 @@ RECAPTCHA_PUBLIC_KEY = '6LfQxbwSAAAAAPCZZSoEvgD1NdxjYm_ROfFCmae-'
 RECAPTCHA_PRIVATE_KEY = '6LfQxbwSAAAAAKBLJ3Qo36kC9djqTy5K0hJ-QMvQ'
 
 from local_settings import *
-from logging_settings import *
+#from logging_settings import *
 

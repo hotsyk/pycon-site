@@ -5,14 +5,14 @@ import os.path
 
 from settings import *
 
-DEBUG = True
+DEBUG = False
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'vhotsyk_vbuchi',                      # Or path to database file if using sqlite3.
+        'NAME': 'vhotsyk_pycon',                      # Or path to database file if using sqlite3.
         'USER': 'vhotsyk',                      # Not used with sqlite3.
         'PASSWORD': '1FHjgr65',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
