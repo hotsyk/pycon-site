@@ -9,3 +9,4 @@ sorl-thumbnail
 -e git+http://github.com/robhudson/django-debug-toolbar.git#egg=django-debug-toolbar
 mysql-python
 PIL
+recaptcha-client

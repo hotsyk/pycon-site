@@ -2,11 +2,11 @@
 import os
 PROJECT_DIR = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+     ('Volodymyr Hotsyk', 'gotsyk@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -93,7 +93,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'jogging.middleware.LoggingMiddleware',
@@ -117,6 +117,11 @@ INSTALLED_APPS = (
     'jogging',
     'core',
 )
+
+EMAIL_FROM = 'do-not-reply@ua.pycon.org'
+
+RECAPTCHA_PUBLIC_KEY = '6LfQxbwSAAAAAPCZZSoEvgD1NdxjYm_ROfFCmae-'
+RECAPTCHA_PRIVATE_KEY = '6LfQxbwSAAAAAKBLJ3Qo36kC9djqTy5K0hJ-QMvQ'
 
 from local_settings import *
 from logging_settings import *

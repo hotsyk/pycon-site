@@ -1,0 +1,25 @@
+Dear {{ first_name }} {{ last_name }}
+
+This is automatic email from the http://ua.pycon.org site to confirm email address used while the registration for the PyCon Ukraine 2010 conference.
+
+To verify your email address, please follow the next link:
+
+{{ confirm_link }}
+
+If you haven't registered at the http://ua.pycon.org site, please just ignore this email.
+
+If you have troubles while trying to confirm registration, please feel free to contact us at the emailtroubles@hotsyk.com
+
+{% if not barcode %}
+Please, be aware that the registration is not completed without entering barcode from your ticket.
+
+You can buy tickets online at the http://www.kvytky.ua/ru/event/8025 site or offline at the http://www.kvytky.ua/ru/cashiers
+
+If you have troubles with kvytky.ua site or with payments, please feel free to contact us at the ticketpycon@hotsyk.com
+{% endif %}
+
+Sincerely,
+Volodymyr Hotsyk,
+co-organizer
+PyCon Ukraine 2010
++380665600856

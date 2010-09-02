@@ -673,3 +673,27 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 * html .navigation, * html #footer, * html #splash, * html .comment ul {height: 0.01%;}
 * html #footer-left {width: 500px;}
 .navigation, #splash, .comment ul {min-height: 0.01%;}
+
+
+input, textarea {
+	border: 1px solid #000;
+	width: 300px;
+}
+
+.errors {
+	color: red;
+	text-align: left;
+	padding: 0;
+	
+}
+.errors ul {
+	list-style: none;
+	list-style-position: outside;
+}
+
+table tr td {
+	vertical-align: top;
+}
+table tr {
+	border-bottom: 1px solid #eed;
+}

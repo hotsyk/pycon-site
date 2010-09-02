@@ -39,13 +39,10 @@
 		</div>
 		<div class="navigation" id="sub-nav">
 			<ul class="tabbed">
-				<li class="current-tab"><a href="#">About</a></li>
-                <li><a href="#">Speakers</a></li>
-                <li><a href="#">Sponsors</a></li>
-                <li><a href="#">Registration</a></li>
-                <li><a href="#">Programm</a></li>
-                <li><a href="#">Participant's guide</a></li>
-                <li><a href="#">Contact</a></li>
+				{% block menu %}
+				<li class="current-tab"><a href="/">News and updates</a></li>
+                <li><a href="/register/">Registration</a></li>
+				{% endblock %}
 			</ul>
 			<div class="clearer">&nbsp;</div>
 		</div>
@@ -83,9 +80,29 @@
 	</div>
 	<div class="main" id="main-two-columns">
 		<div class="left" id="main-content">
+			{% block main %}
 			<div class="section">
+				
 				<div class="section-title">News and updates</div>
 				<div class="section-content">
+                    <div class="post">
+                        <div class="post-title"><h2>Start of the registration</h2></div>
+                        <div class="post-date">Wednesday, September 1, 2010 by Volodymyr Hotsyk</div>
+                        <div class="post-body">
+                            <p>Registration is finally started. You can register at the <a href='/register'>our site</a> but please be aware, that registration won't be completed without entering barcode from the ticket.
+							You can buy tickets at the <a href='http://www.kvytky.ua/ru/event/8025'>kvytky.ua</a> site or at the <a href='http://www.kvytky.ua/ru/cashiers'>cashiers</a>.<br /><br />
+                        If you have troubles with kvytky.ua site or with payments, please feel free to contact us at the <a href='mailto:ticketpycon@hotsyk.com'>email</a> and we will help you.<br />
+						<br />
+						Price of the tickets:
+						<ul>
+							<li>Regular price: UAH350 (~USD45)</li>
+							<li>Student price: UAH210 (~USD26)</li>
+							<li>PyCamp Kyiv speakers: Free</li>
+							<li>PyCon Ukraine 2010 speakers: Free (final list of speakers will be availble at the 10th of October as the result of the votes for talk proposals)</li>
+						</ul> 
+							</p>
+                        </div>
+                    </div>      					
                     <div class="post">
                         <div class="post-title"><h2>Mongo - one year later.</h2></div>
                         <div class="post-date">Monday, July 12, 2010 by Volodymyr Hotsyk</div>
@@ -144,7 +161,9 @@
 					<div class="clearer">&nbsp;</div>
 				</div>
 			</div>
+			{% endblock %}
 			<div class="clearer">&nbsp;</div>
+			
 		</div>
 		<div class="right sidebar" id="sidebar">
 			<div class="section">
