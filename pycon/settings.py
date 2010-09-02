@@ -123,6 +123,9 @@ EMAIL_FROM = 'do-not-reply@ua.pycon.org'
 RECAPTCHA_PUBLIC_KEY = '6LfQxbwSAAAAAPCZZSoEvgD1NdxjYm_ROfFCmae-'
 RECAPTCHA_PRIVATE_KEY = '6LfQxbwSAAAAAKBLJ3Qo36kC9djqTy5K0hJ-QMvQ'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/profile/'
+
 from local_settings import *
 from logging_settings import *
 

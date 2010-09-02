@@ -55,6 +55,12 @@
 				{% block menu %}
 				<li class="current-tab"><a href="/">News and updates</a></li>
                 <li><a href="/register/">Registration</a></li>
+				{% if user.is_authenticated %}
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li"><a href="/login">Login</a></li>
+                {% endif %}
 				{% endblock %}
 			</ul>
 			<div class="clearer">&nbsp;</div>

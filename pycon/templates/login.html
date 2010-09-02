@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block menu %}
+				<li><a href="/">News and updates</a></li>
+                <li><a href="/register">Registration</a></li>
+				{% if user.is_authenticated %}
+				    <li><a href="/profile">Profile</a></li>
+				    <li><a href="/logout">Logout</a></li>
+				{% else %}
+				    <li class="current-tab"><a href=".">Login</a></li>
+				{% endif %}
+{% endblock %}
+
+
+{% block main %}
+        <div class="section">
+				<div class="section-title">Login</div>
+				<div class="section-content">
+                    <div class="post">
+                    	{% if form.errors %}
+							<p>Your username and password didn't match. Please try again.</p>
+							{% endif %}
+							
+							<form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+							<table>
+							<tr>
+							    <td>Email</td>
+							    <td>{{ form.username }}</td>
+							</tr>
+							<tr>
+							    <td>{{ form.password.label_tag }}</td>
+							    <td>{{ form.password }}</td>
+							</tr>
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<input type="hidden" name="next" value="{{ next }}" />
+									<input type="submit" value="login" />
+								</td>
+							</tr>
+							</table>
+							
+							
+							
+							</form>
+                    </div>  					
+					<div class="content-separator"></div>
+					<div class="clearer">&nbsp;</div>
+				</div>
+			</div>
+{% endblock %}
+</body>
+</html>
