@@ -2,9 +2,9 @@
 
 {% block menu %}
 				<li><a href="/">News and updates</a></li>
-                <li class="current-tab"><a href=".">Registration</a></li>
+                <li><a href=".">Registration</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="/profile">Profile</a></li>
+                    <li  class="current-tab"><a href="/profile">Profile</a></li>
                     <li><a href="/logout">Logout</a></li>
                 {% else %}
                     <li"><a href="/login">Login</a></li>
@@ -14,20 +14,21 @@
 
 {% block main %}
         <div class="section">
-				<div class="section-title">Registration</div>
+				<div class="section-title">Your profile</div>
 				<div class="section-content">
                     <div class="post">
-                    	{% if not success %}
+                    	{% if not error %}
 						
-						<h3 style="background-color:#eee;padding:14px;">Please, be aware that the registration is not completed without entering barcode from your ticket.<br />
-						You can buy tickets at the <a href='http://www.kvytky.ua/ru/event/8025'>kvytky.ua</a> site or at the <a href='http://www.kvytky.ua/ru/cashiers'>cashiers</a>.<br /><br />
-						If you have troubles with kvytky.ua site or with payments, please feel free to contact us at the <a href='mailto:ticketpycon@hotsyk.com'>email</a> and we will help you.<br />
-						<br />
-						Anyway, you can register now and enter barcode from the ticket later on your personal profile page.
+						<h3 style="background-color:#eee;padding:14px;">
+						{% if not barcode %}
+							You haven't entered barcode yet. Please enter barcode from the ticket to avoid unexpected delays while registration on the conference.<br /><br />
+							If you haven't bought ticket yet, you can buy it at the <a href='http://www.kvytky.ua/ru/event/8025'>kvytky.ua</a> site or at the <a href='http://www.kvytky.ua/ru/cashiers'>cashiers</a>.<br /><br />
+							If you have troubles with kvytky.ua site or with payments, please feel free to contact us at the <a href='mailto:ticketpycon@hotsyk.com'>email</a> and we will help you.<br />
+						{% endif %}
 						</h3>
                     	<form action="." method='post'>
                     	<table>
-                        {% for field in participantform %}
+                        {% for field in profileform %}
 						  <tr>
 							  <td>
 								  {% if field.field.required %}<strong>{% endif %}
@@ -53,12 +54,12 @@
 						{% endfor %}
 						<tr>
 						<td></td>
-						<td><input type="submit" value=" Register! " /></td>
+						<td><input type="submit" value=" Update profile! " /></td>
 						</tr>
 						</table>
 						</form>
 					  {% else %}
-					   <h3>Congratulations! You've registered. Please check you email for the activation link.</h3>
+					   <h3>{{ error }}</h3>
 					  {% endif %}
                     </div>  					
 					<div class="content-separator"></div>

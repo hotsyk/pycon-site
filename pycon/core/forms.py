@@ -41,4 +41,18 @@ class ParticipantRegistrationForm(forms.ModelForm):
         if password and password2:
             if password != password2:
                 raise forms.ValidationError('Passwords don\'t match')
-        return cleaned_data        
+        return cleaned_data   
+    
+class ProfileUpdateForm(forms.ModelForm):
+    
+    first_name = forms.CharField(label="First name")
+    last_name = forms.CharField(label="Last name")
+    
+    class Meta:
+        model = ParticipanProfile
+        exclude = ('user', 'active', 'verification_code')
+        fields = ['first_name', 'last_name',
+                  'tshirt_size', 'pre_party', 'ticket_barcode',
+                  'twitter_name',
+                  'blog', 'linkedin',
+                  'facebook', ]

@@ -9,6 +9,7 @@ from django.template import RequestContext
 from django.template import loader, Context
 from django.conf import settings 
 from django.core.mail import EmailMultiAlternatives
+from django.contrib.auth import logout
 
 from pycon.core.decorators import render_to
 from pycon.core.models import *
@@ -99,3 +100,38 @@ def confirm(request, code):
     profile.active = True
     profile.save()
     return {'success': True}
+
+@login_required
+@render_to('profile.html')
+def profile(request):
+    user = request.user
+    profile = get_object_or_404(ParticipanProfile, user=user)
+    if not profile.active:
+       logout(request)
+       return {'error': 'You profile haven\'t been activated. Please recheck you email for activation link.'}
+   
+    if request.method == 'POST':
+        profile_form = ProfileUpdateForm(request.POST)
+        if profile_form.is_valid():
+            profile.user.first_name = profile_form.cleaned_data['first_name']
+            profile.user.last_name = profile_form.cleaned_data['last_name']
+            profile.user.save()
+            profile.tshirt_size = profile_form.cleaned_data['tshirt_size'] 
+            profile.pre_party = profile_form.cleaned_data['pre_party']
+            profile.ticket_barcode = profile_form.cleaned_data['ticket_barcode']
+            profile.twitter_name = profile_form.cleaned_data['twitter_name']
+            profile.blog = profile_form.cleaned_data['blog']
+            profile.linkedin = profile_form.cleaned_data['linkedin']
+            profile.facebook = profile_form.cleaned_data['facebook']
+            profile.save()
+    else:
+        profile_form = ProfileUpdateForm(initial={'first_name': profile.user.first_name,
+                                                 'last_name': profile.user.last_name,
+                                                 'tshirt_size': profile.tshirt_size,
+                                                 'pre_party': profile.pre_party,
+                                                 'ticket_barcode': profile.ticket_barcode,
+                                                 'twitter_name': profile.twitter_name,
+                                                 'blog': profile.blog,
+                                                 'linkedin': profile.linkedin,
+                                                 'facebook': profile.facebook,})
+    return {'profileform': profile_form, 'barcode': profile.ticket_barcode}
