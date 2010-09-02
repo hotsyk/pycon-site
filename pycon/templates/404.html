@@ -1,0 +1,115 @@
+{% extends 'index.html' %}
+			{% block main %}
+			<div class="section">
+				
+				<div class="section-title"></div>
+				<div class="section-content">
+                    <div class="post">
+                        <div class="post-title"><h2>raise(e)</h2></div>
+                        <div class="post-body">
+                                        <pre>
+                <code>
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+404Error: antigravity not found here, look at another place
+                </code>
+            </pre>
+ 
+							</p>
+                        </div>
+                    </div>      					
+					<div class="clearer">&nbsp;</div>
+				</div>
+			</div>
+			{% endblock %}
+			<div class="clearer">&nbsp;</div>
+			
+		</div>
+		<div class="right sidebar" id="sidebar">
+			<div class="section">
+				<div class="section-title">PyCon Buzz</div>
+				<div class="section-content">
+					{% block twitter %}
+		          <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+		            <script>
+		                new TWTR.Widget({
+		                  version: 2,
+		                  type: 'search',
+		                  search: 'pykyiv OR pycon ukraine OR uapycon',
+		                  interval: 6000,
+		                  title: '#uapycon',
+		                  width: 210,
+		                  height: 270,
+		                  theme: {
+		                    shell: {
+		                      background: '#436B9C',
+		                      color: '#ffffff'
+		                    },
+		                    tweets: {
+		                      background: '#ffffff',
+		                      color: '#444444',
+		                      links: '#056087'
+		                    }
+		                  },
+		                  features: {
+		                    scrollbar: false,
+		                    loop: true,
+		                    live: true,
+		                    hashtags: true,
+		                    timestamp: true,
+		                    avatars: true,
+		                    behavior: 'default'
+		                  }
+		                }).render().start();
+		                </script>
+		            {% endblock twitter %}
+				</div>
+
+			</div>
+			<div class="section">
+				<div class="section-title">Sponsors and partners</div>
+				<div class="section-content">
+					<ul class="nice-list">
+						<li>
+							<div class="left"><a href="http://www.python.org/psf/">Python Software Foundation</a></div>
+							<div class="clearer">&nbsp;</div>
+						</li>
+						<li>
+							<div class="left"><a href="http://developers.org.ua">Developers.org.ua</a></div>
+							<div class="clearer">&nbsp;</div>
+						</li>
+                        <li>
+                            <div class="left"><a href="http://www.programa.pl/">programa.pl</a></div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="left"><a href="http://similaria.pl">similaria.pl</a></div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>                       												
+						<li>
+							<div class="left"><a href="http://42coffeecups.com">42coffeecups.com</a></div>
+							<div class="clearer">&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+		</div>
+		<div class="clearer">&nbsp;</div>
+	</div>
+	<div id="footer">
+		<div class="left" id="footer-left">
+			<p>&copy; 2010 PyCon Ukraine. All rights Reserved</p>
+			<p class="quiet"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></p>
+			<div class="clearer">&nbsp;</div>
+		</div>
+		<div class="right" id="footer-right">
+            <a href="http://twitter.com/gotsyk">@gotsyk</a> <span class="text-separator">|</span> <a href="http://twitter.com/#search?q=uapycon">#uapycon</a>
+			<span class="text-separator">|</span> <a href="http://groups.google.com/group/uapycon">mailing list</a> <span class="text-separator">|</span> <a href="mailto:uapycon@hotsyk.com">uapycon@hotsyk.com</a> <span class="text-separator">|</span> <a href="#top" class="quiet">Page Top &uarr;</a></p>
+		</div>
+		<div class="clearer">&nbsp;</div>
+	</div>
+</div>
+
+</body>
+</html>
