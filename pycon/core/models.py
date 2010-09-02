@@ -54,7 +54,7 @@ class ParticipanProfile(models.Model):
     TSHIRTCHOICES = (('S', 'Small'),
                      ('M', 'Medium'),
                      ('L', 'Large'),
-                     ('XL', 'X-Large'))
+                     ('X', 'X-Large'))
     PYTHONLEVEL = (('0', 'Novice'),
                    ('1', 'Junior'),
                    ('2', 'Middle'),
