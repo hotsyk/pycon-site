@@ -38,10 +38,63 @@ class Speaker(models.Model):
     
     
 class CFPProfile(models.Model):
+    CFP_TYPE_CHOICES = (('L', 'Lightning talk'),
+                     ('T', 'Talk'),
+                     ('M', 'Master class'),
+                     ('U', 'Tutorial'),
+                     ('P', 'Pecha Kucha'))
+
+    CFP_LENGTH = (('1', '5 minutes (Lightning talk)'),
+                     ('2', '6 minutes 40 seconds (Pecha Kucha)'),
+                     ('3', '20 minutes'),
+                     ('4', '30 minutes'),
+                     ('5', '45 minutes'),
+                     ('6', '60 minutes'),
+                     )   
     
+    CFP_AUDIENCE = (('0', 'Beginners'),
+                   ('1', 'Intermediate'),
+                   ('2', 'Advanced'),
+                   ('3', 'General interest'),                   
+                   )     
+    
+    CFP_CATEGORIES = (('0', 'Web Programming'),
+                      ('1', 'UI Programming'), 
+                      ('2', 'Python Language'),
+                      ('3', 'Alternative Implementations'),
+                      ('4', 'Python in Action'),
+                      ('5', 'Testing'),
+                      ('6', 'Documentation, Tools & Library'),
+                      ('7', 'Mobile Computing'),
+                      ('8', 'Multimedia'),
+                      ('9', 'Community'),
+                      ('10', 'Education'),
+                      ('11', 'Build, Packaging & Deployment'), 
+                      ('12', 'Science'),
+                      ('13', 'Databases'),
+                      ('14', 'Python 3'),
+                      ('15', 'Security'),
+                      ('16', 'Games Programming'),
+                      ('17', 'Network'),
+                      ('18', 'GIS'),
+                      ('19', 'Highload'),
+                      ('20', 'Other')) 
+
     user = models.ForeignKey(User)
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
+    title = models.CharField(max_length=255, help_text='Title of your proposed talk')
+    type = models.CharField(max_length=1, choices=CFP_TYPE_CHOICES, default='L',
+                            help_text="Pecha Kucha format is experimental and decision if it is availble on the PyCon Ukraine will appears on results of the CFP")
+    proposed_length = models.CharField(max_length=1, default='0', choices=CFP_LENGTH)
+    oneliner = models.CharField(max_length=255, help_text='Description of your CFP in 255 chars')
+    target_audience = models.CharField(max_length=1, choices=CFP_AUDIENCE, default='0')
+    category = models.CharField(max_length=2, choices=CFP_CATEGORIES, default='20',
+                                help_text="Don't worry if your talk fits into multiple categories, just choose one")
+    abstract = models.TextField(help_text='Abstract description of your talk.')
+    brief_biography = models.TextField(help_text='Tell us about yourself. This is a community conference, so no need to be shy!')
+    comments = models.TextField(blank=True, null=True, help_text="Also enter here the name and email of co-presenter if any. Email should be the email he or she used while registration.")
+    photo = ImageWithThumbnailsField(help_text="Your photo", upload_to='cfp',
+                                     thumbnail={'size': (50, 50)})
+    inrating = models.BooleanField(default=True)
     
 class Country(models.Model):
     name = models.CharField(max_length=255)
@@ -103,4 +156,15 @@ class ParticipanProfile(models.Model):
     
     active = models.BooleanField(default=False)
     verification_code = models.CharField(max_length=255, blank=True, null=True)
-            
+    
+    pykyiv_speaker = models.BooleanField(default=False)
+    pycon_speaker = models.BooleanField(default=False)
+    invited_speaker = models.BooleanField(default=False)
+    help_team = models.BooleanField(default=False)
+    organizator = models.BooleanField(default=False)
+    
+    @property
+    def is_profile_completed(self):
+        return self.ticket_barcode != '' or self.pycon_speaker or\
+         self.pykyiv_speaker or self.invited_speaker or self.organizator or\
+         self.help_team        
