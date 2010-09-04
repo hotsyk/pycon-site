@@ -134,4 +134,56 @@ def profile(request):
                                                  'blog': profile.blog,
                                                  'linkedin': profile.linkedin,
                                                  'facebook': profile.facebook,})
-    return {'profileform': profile_form, 'barcode': profile.ticket_barcode}
+    return {'profileform': profile_form, 'completed': profile.is_profile_completed}
+
+@render_to('cfp.html')
+def cfpsubmission(request):
+    user = request.user
+    profile = get_object_or_404(ParticipanProfile, user=user)
+    if not profile.active:
+       logout(request)
+       return {'error': 'You profile haven\'t been activated. Please recheck you email for activation link.'}
+    
+    success = False
+    if request.method == 'POST':
+        cfp_form = CFPSubmissionForm(request.POST, request.FILES)
+        if cfp_form.is_valid():
+            cfp = CFPProfile.objects.create(user=user, **cfp_form.cleaned_data)
+            cfp.save()
+            from django.core.mail import mail_admins
+            mail_admins('[PyCON UKRAINE SITE]: User %s (%s %s) submited new CFP' % (profile.user.username, profile.user.first_name, profile.user.last_name),
+                        'You can check CFP here http://ua.pycon.org/admin/core/cfpprofile/%d/' %cfp.pk)
+            
+            success = True
+    else:
+        cfp_form = CFPSubmissionForm()
+    return {'cfp_form': cfp_form, 'success': success}
+
+@render_to('freeparticipantapply.html')
+def freeparticipantapply(request):
+    user = request.user
+    profile = get_object_or_404(ParticipanProfile, user=user)
+    if not profile.active:
+       logout(request)
+       return {'error': 'You profile haven\'t been activated. Please recheck you email for activation link.'}
+    
+    if profile.is_profile_completed:
+        return {'error': 'You profile already marked as completed. You not need to apply for Free Participant status.'}
+
+    success = False
+    if request.method == 'POST':
+        applyform = FreeParticipantApplyForm(request.POST)
+        if applyform.is_valid():
+            profile.pykyiv_speaker = applyform.cleaned_data['pykyiv_speaker']
+            profile.invited_speaker = applyform.cleaned_data['invited_speaker']
+            profile.help_team = applyform.cleaned_data['help_team']
+            profile.organizator = applyform.cleaned_data['organizator']
+            profile.sponsor_participant = applyform.cleaned_data['sponsor_participant']
+            profile.save()
+            from django.core.mail import mail_admins
+            mail_admins('[PyCON UKRAINE SITE]: User %s (%s %s) applied for free status' % (profile.user.username, profile.user.first_name, profile.user.last_name),
+                        'You can check user\'s application at the http://ua.pycon.org/admin/core/participanprofile/%d/' %profile.pk)
+            success = True
+    else:
+        applyform = FreeParticipantApplyForm()
+    return {'applyform': applyform, 'success': success}

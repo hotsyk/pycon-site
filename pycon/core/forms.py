@@ -56,3 +56,19 @@ class ProfileUpdateForm(forms.ModelForm):
                   'twitter_name',
                   'blog', 'linkedin',
                   'facebook', ]
+        
+class CFPSubmissionForm(forms.ModelForm):
+    
+    class Meta:
+        model = CFPProfile
+        exclude = ('user', 'inrating')
+
+class FreeParticipantApplyForm(forms.ModelForm):
+    
+    class Meta:
+        model = ParticipanProfile
+        fields = ['pykyiv_speaker', 'invited_speaker', 'help_team', 'organizator',
+                  'sponsor_participant']
+        
+        
+       

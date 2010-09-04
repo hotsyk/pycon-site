@@ -157,14 +157,16 @@ class ParticipanProfile(models.Model):
     active = models.BooleanField(default=False)
     verification_code = models.CharField(max_length=255, blank=True, null=True)
     
-    pykyiv_speaker = models.BooleanField(default=False)
-    pycon_speaker = models.BooleanField(default=False)
-    invited_speaker = models.BooleanField(default=False)
-    help_team = models.BooleanField(default=False)
-    organizator = models.BooleanField(default=False)
+    pykyiv_speaker = models.BooleanField("I was the PyCamp Kyiv speaker", default=False)
+    pycon_speaker = models.BooleanField("I am the PyCon Ukraine speaker", default=False)
+    invited_speaker = models.BooleanField("I am invited speaker", default=False)
+    help_team = models.BooleanField("I am member of help team", default=False)
+    organizator = models.BooleanField("I am member of organizers team", default=False)
+    sponsor_participant = models.BooleanField("I am employee of the PyCon Ukraine sponsor", default=False)
+    confirmed_free = models.BooleanField(default=False)
     
     @property
     def is_profile_completed(self):
-        return self.ticket_barcode != '' or self.pycon_speaker or\
+        return self.ticket_barcode != '' or ((self.pycon_speaker or\
          self.pykyiv_speaker or self.invited_speaker or self.organizator or\
-         self.help_team        
+         self.help_team or self.sponsor_participant) and self.confirmed_free)   

@@ -2,10 +2,10 @@
 
 {% block menu %}
 				<li><a href="/">News and updates</a></li>
-                <li class="current-tab"><a href=".">Registration</a></li>
+                <li><a href=".">Registration</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="/profile">Profile</a></li>
-					<li><a href="/cfpsubmit">Submit proposal</a></li>
+                    <li  class=""><a href="/profile">Profile</a></li>
+					<li  class="current-tab"><a href="/cfpsubmit">Submit proposal</a></li>
                     <li><a href="/logout">Logout</a></li>
                 {% else %}
                     <li"><a href="/login">Login</a></li>
@@ -15,20 +15,19 @@
 
 {% block main %}
         <div class="section">
-				<div class="section-title">Registration</div>
+				<div class="section-title">Submit Talk Proposal</div>
 				<div class="section-content">
                     <div class="post">
-                    	{% if not success %}
-						
-						<h3 style="background-color:#eee;padding:14px;">Please, be aware that the registration is not completed without entering barcode from your ticket.<br />
-						You can buy tickets at the <a href='http://www.kvytky.ua/ru/event/8025'>kvytky.ua</a> site or at the <a href='http://www.kvytky.ua/ru/cashiers'>cashiers</a>.<br /><br />
-						If you have troubles with kvytky.ua site or with payments, please feel free to contact us at the <a href='mailto:ticketpycon@hotsyk.com'>email</a> and we will help you.<br />
-						<br />
-						Anyway, you can register now and enter barcode from the ticket later on your personal profile page.
+                    	{% if not error %}
+						{% if success %}
+						<h3 style="background-color:#eee;padding:14px;">
+							Congratulations! Your Talk Proposal was accepted.<br />
+							You will be notified by email when it appears in the voting.
 						</h3>
-                    	<form action="." method='post'>
+						{% else %}
+                    	<form action="." method='post' enctype="multipart/form-data">
                     	<table>
-                        {% for field in participantform %}
+                        {% for field in cfp_form %}
 						  <tr>
 							  <td>
 								  {% if field.field.required %}<strong>{% endif %}
@@ -54,12 +53,13 @@
 						{% endfor %}
 						<tr>
 						<td></td>
-						<td><input type="submit" value=" Register! " /></td>
+						<td><input type="submit" value=" Submit Proposal! " /></td>
 						</tr>
 						</table>
 						</form>
+					  {% endif %}
 					  {% else %}
-					   <h3>Congratulations! You've registered. Please check you email for the activation link.</h3>
+					   <h3>{{ error }}</h3>
 					  {% endif %}
                     </div>  					
 					<div class="content-separator"></div>
