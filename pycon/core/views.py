@@ -136,6 +136,7 @@ def profile(request):
                                                  'facebook': profile.facebook,})
     return {'profileform': profile_form, 'completed': profile.is_profile_completed}
 
+@login_required
 @render_to('cfp.html')
 def cfpsubmission(request):
     user = request.user
@@ -159,6 +160,7 @@ def cfpsubmission(request):
         cfp_form = CFPSubmissionForm()
     return {'cfp_form': cfp_form, 'success': success}
 
+@login_required
 @render_to('freeparticipantapply.html')
 def freeparticipantapply(request):
     user = request.user
