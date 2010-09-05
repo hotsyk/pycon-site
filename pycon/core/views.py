@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect
 from django.utils import simplejson
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.template import loader, Context
 from django.conf import settings 
@@ -29,7 +29,8 @@ def index(request):
 
 @render_to('register.html')
 def register(request):
-    
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/profile')
     if request.method == 'POST':
         form = ParticipantRegistrationForm(request.POST)
         if form.is_valid():
