@@ -83,9 +83,9 @@ class CFPProfile(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(max_length=255, help_text='Title of your proposed talk')
     type = models.CharField(max_length=1, choices=CFP_TYPE_CHOICES, default='L',
-                            help_text="Pecha Kucha format is experimental and decision if it is availble on the PyCon Ukraine will appears on results of the CFP")
+                            help_text="Pecha Kucha format is experimental and decision if it is availble on the PyCon Ukraine will appears on results of the proposal submission")
     proposed_length = models.CharField(max_length=1, default='0', choices=CFP_LENGTH)
-    oneliner = models.CharField(max_length=255, help_text='Description of your CFP in 255 chars')
+    oneliner = models.CharField(max_length=255, help_text='Description of your proposal in 255 chars')
     target_audience = models.CharField(max_length=1, choices=CFP_AUDIENCE, default='0')
     category = models.CharField(max_length=2, choices=CFP_CATEGORIES, default='20',
                                 help_text="Don't worry if your talk fits into multiple categories, just choose one")
