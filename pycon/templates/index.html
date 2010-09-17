@@ -107,9 +107,9 @@
 					{% for news in last_news %}
                     <div class="post">
                         <div class="post-title"><h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2></div>
-                        <div class="post-date">{{ news.created|date:"D, d M, Y" }} by {{ news.author.first_name }} {{ news.author.last_name }}</div>
+                        {% comment %}<div class="post-date">{{ news.created|date:"D, d M, Y" }} by {{ news.author.first_name }} {{ news.author.last_name }}</div>{% endcomment %}
                         <div class="post-body">
-                            <p>{{ news.short }}</p>
+                            <p>{{ news.short|safe }}</p>
 							<br />
 							<a href="{{ news.get_absolute_url }}">Read more &rarr;</a>
                         </div>
