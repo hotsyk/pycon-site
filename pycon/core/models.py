@@ -17,13 +17,12 @@ class News(models.Model):
     
     title = models.CharField(max_length=255)
     slug = models.SlugField()
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField()
     author = models.ForeignKey(User, blank=True, null=True)
     
     short = models.TextField()
     long = models.TextField(blank=True, null=True)
     
-    featured = models.BooleanField(default=False)
     
     def get_absolute_url(self):
         return reverse('news', args=[self.pk])
