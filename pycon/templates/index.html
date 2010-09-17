@@ -70,7 +70,7 @@
 
 	<div id="splash">
 		<div class="col3 left">
-			<h2 class="label label-green">Points of interest</h2>
+			<h2 class="label label-green">Speakers</h2>
 			<ul class="nice-list">
 			<li>Python</li>
 			<li>Django and other webframeworks</li>
@@ -82,8 +82,8 @@
 		</div>
 		<div class="col3-mid left">
 			<h2 class="label label-orange">Speakers</h2>
-			<p class="quiet large">Michael Trier</p>
-			<p><img src="{{MEDIA_URL}}images/people/mtrier240x120.png" alt="" class="bordered" /></p>
+			<p class="quiet large">Yury Yurevich</p>
+			<p><img src="{{MEDIA_URL}}images/people/yurevich.jpg" alt="" class="bordered" /></p>
 			<p><em></em></p>
 		</div>
 
@@ -104,86 +104,24 @@
 				
 				<div class="section-title">News and updates</div>
 				<div class="section-content">
+					{% for news in last_news %}
                     <div class="post">
-                        <div class="post-title"><h2>Start of the registration</h2></div>
-                        <div class="post-date">Wednesday, September 1, 2010 by Volodymyr Hotsyk</div>
+                        <div class="post-title"><h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2></div>
+                        <div class="post-date">{{ news.created|date:"D, d M, Y" }} by {{ news.author.first_name }} {{ news.author.last_name }}</div>
                         <div class="post-body">
-                            <p>Registration is finally started. You can register at the <a href='/register'>our site</a> but please be aware, that registration won't be completed without entering barcode from the ticket.
-							You can buy tickets at the <a href='http://www.kvytky.ua/ru/event/8025'>kvytky.ua</a> site or at the <a href='http://www.kvytky.ua/ru/cashiers'>cashiers</a>.<br /><br />
-                        If you have troubles with kvytky.ua site or with payments, please feel free to contact us at the <a href='mailto:ticketpycon@hotsyk.com'>email</a> and we will help you.<br />
-						<br />
-						Price of the tickets:
-						<ul>
-							<li>Regular price: UAH350 (~USD45)</li>
-							<li>Student price: UAH210 (~USD26)</li>
-							<li>PyCamp Kyiv speakers: Free</li>
-							<li>PyCon Ukraine 2010 speakers: Free (final list of speakers will be availble at the 10th of October as the result of the votes for talk proposals)</li>
-						</ul> 
-							</p>
+                            <p>{{ news.short }}</p>
+							<br />
+							<a href="{{ news.get_absolute_url }}">Read more &rarr;</a>
                         </div>
                     </div>      					
-                    <div class="post">
-                        <div class="post-title"><h2>Mongo - one year later.</h2></div>
-                        <div class="post-date">Monday, July 12, 2010 by Volodymyr Hotsyk</div>
-                        <div class="post-body">
-                            <p>Marcin Szajek (Programa.pl) and Maciej Dziardziel (Adwertajzing) will speak about their experience of using MongoDB in production.</p>
-							<q><i>As creators of social networking sites <a href="http://totutam.pl">totutam.pl</a>, <a href="http://similaria.pl">similaria.pl</a> and ad network <a href="http://adwerti.pl">adwerti.pl</a>, we want to talk about our experience with Mongodb, one year after we started using it. We will tell about the reasons that led us into NoSQL database, how Mongo have influenced the tools we are using, the way we design our applications and how it meets our expectations. We will also present some of tools that we have built to make working with Mongo easier.</i></q>
-                        </div>
-                    </div>  					
-                    <div class="post">
-                        <div class="post-title"><h2>PSF supporting PyCon Ukraine</h2></div>
-                        <div class="post-date">Monday, May 31, 2010 by Volodymyr Hotsyk</div>
-                        <div class="post-body">
-                            <p>The PSF Board approved a grant of $750US to support PyCon Ukraine.</p>
-                            <p><a href="http://pyfound.blogspot.com/2010/05/more-pycon-2010-conference-grants.html">http://pyfound.blogspot.com/2010/05/more-pycon-2010-conference-grants.html</a></p>
-                        </div>
-                    </div>					
-					<div class="post">
-						<div class="post-title"><h2>Missing PyCamp? Welcome, PyCon!</h2></div>
-						<div class="post-date">Wednesday, May 19, 2010 by Volodymyr Hotsyk</div>
-						<div class="post-body">
-							<p>At the beginning of the 2010, the conference PyCamp gathered about 220 participants from Ukraine, Russia and Belarus into the magical Python world. 
-                            We decided to continue this great happening and today we are starting the preparation to the biggest python conference in Kyiv. This Fall. </p>
-                            <p>We are open for proposals and your feedback. Let's make it the most impressive Python event together!</p>
-						</div>
-					</div>
-					<div class="content-separator"></div>
-					{% comment %}
-					<div class="col3 left">
-						<div class="column-content">
-							<div class="post">
-								<h3><a href="#">Article title</a></h3>
-								<p>Integer diam elit, condi mentum ac semper ut, tincidunt non diam. Ut congue at commodo aenean euismod tincidunt lorem euismod.</p>
-								<a href="#" class="more">Read more &#187;</a>
-							</div>
-						</div>
-					</div>
-					<div class="col3 col3-mid left">
-						<div class="column-content">
-							<div class="post">
-								<h3><a href="#">Second Article Title</a></h3>
-								<p>Sed congue lacinia leo, sed dignissim odio pharetra vel. Fusce a dignissim dui. Fusce semper porttitor enim dapibus venenatis.</p>
-								<a href="#" class="more">Read more &#187;</a>
-							</div>
-						</div>
-					</div>
-					<div class="col3 right">
-						<div class="column-content">
-							<div class="post">
-								<h3><a href="#">Third title</a></h3>
-								<p>Sed auctor hendrerit eros eu eleifend. Cras hendrerit iaculis sodales. Pellentesque interdum rhoncus magna.</p>
-								<a href="#" class="more">Read more &#187;</a>
-							</div>
-						</div>
-					</div>
-					{% endcomment %}
+                    {% endfor %}
 					<div class="clearer">&nbsp;</div>
 				</div>
 			</div>
 			{% endblock %}
-			<div class="clearer">&nbsp;</div>
-			
-		</div>
+         <div class="clearer">&nbsp;</div>
+        </div>
+			{% block right %}
 		<div class="right sidebar" id="sidebar">
 			<div class="section">
 				<div class="section-title">PyCon Buzz</div>
@@ -229,26 +167,59 @@
 				<div class="section-title">Sponsors and partners</div>
 				<div class="section-content">
 					<ul class="nice-list">
+						
+                        <li>
+                            <h3>Diamond sponsor:</h3>                        	
+                            <div class="left">
+                                <a href="http://www.oDesk.com">
+                                	<img src="{{ MEDIA_URL }}sponsors/odesk.jpg" alt="oDesk" />
+								</a>
+							</div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>						
 						<li>
-							<div class="left"><a href="http://www.python.org/psf/">Python Software Foundation</a></div>
-							<div class="clearer">&nbsp;</div>
-						</li>
-						<li>
-							<div class="left"><a href="http://developers.org.ua">Developers.org.ua</a></div>
+                            <h3>Bronze sponsor:</h3>							
+							<div class="left"><a href="http://www.python.org/psf/">
+								<img src="{{ MEDIA_URL }}sponsors/python.jpg" alt="Python Software Foundation" />
+							</a></div>
 							<div class="clearer">&nbsp;</div>
 						</li>
                         <li>
-                            <div class="left"><a href="http://www.programa.pl/">programa.pl</a></div>
+                            <h3>Bronze sponsor:</h3>                            
+                            <div class="left"><a href="http://42coffeecups.com">
+                                <img src="{{ MEDIA_URL }}sponsors/42-logo.png" alt="42coffeecups" />
+                            </a></div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>	
+                        <li>
+                            <h3>Partner:</h3> 
+                            <div class="left"><a href="http://www.programa.pl/">
+                                <img src="{{ MEDIA_URL }}sponsors/programapl.png" alt="Programa.pl" />
+                            </a></div>
                             <div class="clearer">&nbsp;</div>
                         </li>
                         <li>
-                            <div class="left"><a href="http://similaria.pl">similaria.pl</a></div>
+                            <h3>Partner:</h3> 
+                            <div class="left"><a href="http://similaria.pl">
+                                <img src="{{ MEDIA_URL }}sponsors/similariapl.png" alt="Similaria.pl" />
+                            </a></div>
                             <div class="clearer">&nbsp;</div>
-                        </li>                       												
+                        </li> 											
 						<li>
-							<div class="left"><a href="http://42coffeecups.com">42coffeecups.com</a></div>
-							<div class="clearer">&nbsp;</div>
-						</li>
+                            <h3>Information partner:</h3>                            
+                            <div class="left"><a href="http://developers.org.ua">
+                                <img src="{{ MEDIA_URL }}sponsors/developers.png" alt="Developers.org.ua" />
+                            </a></div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>   
+                        <li>
+                            <h3>Information partner:</h3>                            
+                            <div class="left"><a href="http://rubylang.org.ua/">
+                                <img src="{{ MEDIA_URL }}sponsors/rubylang.png" alt="RubyConfUa" />
+                            </a></div>
+                            <div class="clearer">&nbsp;</div>
+                        </li> 
+						                      												
 					</ul>
 				</div>
 			</div>
@@ -256,6 +227,8 @@
 		</div>
 		<div class="clearer">&nbsp;</div>
 	</div>
+   {% endblock right %}	
+   {% block footer %}
 	<div id="footer">
 		<div class="left" id="footer-left">
 			<p>&copy; 2010 PyCon Ukraine. All rights Reserved</p>
@@ -272,3 +245,4 @@
 
 </body>
 </html>
+{% endblock footer %}

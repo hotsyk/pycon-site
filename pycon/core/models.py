@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from sorl.thumbnail.fields import ImageWithThumbnailsField
+from django.core.urlresolvers import reverse
 
           
 class Page(models.Model):
@@ -17,9 +18,15 @@ class News(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     created = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, blank=True, null=True)
     
     short = models.TextField()
     long = models.TextField(blank=True, null=True)
+    
+    featured = models.BooleanField(default=False)
+    
+    def get_absolute_url(self):
+        return reverse('news', args=[self.pk])
     
     
     
@@ -164,9 +171,13 @@ class ParticipanProfile(models.Model):
     organizator = models.BooleanField("I am member of organizers team", default=False)
     sponsor_participant = models.BooleanField("I am employee of the PyCon Ukraine sponsor", default=False)
     confirmed_free = models.BooleanField(default=False)
+    paid_bezgotivka = models.BooleanField(default=False)
+    paid_gotivka = models.BooleanField(default=False)
+    orgcomments = models.TextField(blank=True, null=True)
     
     @property
     def is_profile_completed(self):
         return self.ticket_barcode != '' or ((self.pycon_speaker or\
          self.pykyiv_speaker or self.invited_speaker or self.organizator or\
-         self.help_team or self.sponsor_participant) and self.confirmed_free)   
+         self.help_team or self.sponsor_participant or\
+         self.paid_bezgotivka or self.paid_gotivka) and self.confirmed_free)   

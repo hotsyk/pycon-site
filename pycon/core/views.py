@@ -23,8 +23,8 @@ __all__ = ('index')
 
 @render_to('index.html')
 def index(request):
-    context = {}
-    return context
+    last_news = News.objects.all().order_by('-created')[:5]
+    return {'last_news':last_news}
 
 
 @render_to('register.html')
@@ -190,3 +190,8 @@ def freeparticipantapply(request):
     else:
         applyform = FreeParticipantApplyForm()
     return {'applyform': applyform, 'success': success}
+
+@render_to('news_page.html')
+def news(request, pk):
+    news = get_object_or_404(News, pk=pk)
+    return {'news': news}

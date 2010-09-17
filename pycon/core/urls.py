@@ -6,7 +6,9 @@ urlpatterns = patterns('pycon.core.views',
     url(r'^confirm/(?P<code>[\w\-]{27}\=)$', 'confirm', name='confirm'),
     url(r'^profile/$', 'profile', name='profile'),
     url(r'^cfpsubmit/$', 'cfpsubmission', name='cfpsubmission'),
-    url(r'^freeparticipantapply/$', 'freeparticipantapply', name='freeparticipantapply'),
+    url(r'^freeparticipantapply/$', 'freeparticipantapply', 
+        name='freeparticipantapply'),
+    url(r'news/(?P<pk>\d+)$', 'news', name='news'),
     
 )
 

@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'south',
     'jogging',
     'core',
+    'GChartWrapper.charts'
 )
 
 EMAIL_FROM = 'do-not-reply@ua.pycon.org'

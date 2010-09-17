@@ -10,3 +10,4 @@ sorl-thumbnail
 mysql-python
 PIL
 recaptcha-client
+GChartWrapper
