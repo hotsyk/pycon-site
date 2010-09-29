@@ -23,8 +23,10 @@ __all__ = ('index')
 
 @render_to('index.html')
 def index(request):
-    last_news = News.objects.all().order_by('-created')[:5]
-    return {'last_news':last_news}
+    last_news = News.objects.all().order_by('-created')
+    speakers = Speaker.objects.all()
+    return {'last_news':last_news, 
+            'speakers': speakers}
 
 
 @render_to('register.html')
@@ -93,6 +95,8 @@ def register(request):
     else:
         form = ParticipantRegistrationForm()
         context = {'participantform': form}
+    speakers = Speaker.objects.all()
+    context['speakers']= speakers
     return context
 
 @render_to('confirm.html')
@@ -100,7 +104,8 @@ def confirm(request, code):
     profile = get_object_or_404(ParticipanProfile, verification_code=code)
     profile.active = True
     profile.save()
-    return {'success': True}
+    speakers = Speaker.objects.all()
+    return {'success': True, 'speakers': speakers}
 
 @login_required
 @render_to('profile.html')
@@ -135,16 +140,20 @@ def profile(request):
                                                  'blog': profile.blog,
                                                  'linkedin': profile.linkedin,
                                                  'facebook': profile.facebook,})
-    return {'profileform': profile_form, 'completed': profile.is_profile_completed}
+    speakers = Speaker.objects.all()
+    return {'profileform': profile_form, 'completed': profile.is_profile_completed,
+            'speakers': speakers}
 
 @login_required
 @render_to('cfp.html')
 def cfpsubmission(request):
     user = request.user
     profile = get_object_or_404(ParticipanProfile, user=user)
+    speakers = Speaker.objects.all()
     if not profile.active:
        logout(request)
-       return {'error': 'You profile haven\'t been activated. Please recheck you email for activation link.'}
+       return {'error': 'You profile haven\'t been activated. Please recheck you email for activation link.',
+               'speakers': speakers}
     
     success = False
     if request.method == 'POST':
@@ -159,19 +168,23 @@ def cfpsubmission(request):
             success = True
     else:
         cfp_form = CFPSubmissionForm()
-    return {'cfp_form': cfp_form, 'success': success}
+    
+    return {'cfp_form': cfp_form, 'success': success, 'speakers': speakers}
 
 @login_required
 @render_to('freeparticipantapply.html')
 def freeparticipantapply(request):
     user = request.user
     profile = get_object_or_404(ParticipanProfile, user=user)
+    speakers = Speaker.objects.all()
     if not profile.active:
        logout(request)
-       return {'error': 'You profile haven\'t been activated. Please recheck you email for activation link.'}
+       return {'speakers': speakers,
+               'error': 'You profile haven\'t been activated. Please recheck you email for activation link.'}
     
     if profile.is_profile_completed:
-        return {'error': 'You profile already marked as completed. You not need to apply for Free Participant status.'}
+        return {'speakers': speakers,
+                'error': 'You profile already marked as completed. You not need to apply for Free Participant status.'}
 
     success = False
     if request.method == 'POST':
@@ -189,9 +202,11 @@ def freeparticipantapply(request):
             success = True
     else:
         applyform = FreeParticipantApplyForm()
-    return {'applyform': applyform, 'success': success}
+    
+    return {'applyform': applyform, 'success': success, 'speakers': speakers}
 
 @render_to('news_page.html')
 def news(request, pk):
     news = get_object_or_404(News, pk=pk)
-    return {'news': news}
+    speakers = Speaker.objects.all()
+    return {'news': news, 'speakers': speakers}

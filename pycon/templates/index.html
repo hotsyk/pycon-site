@@ -25,6 +25,121 @@
   })();
 
 </script>	
+
+<style type="text/css">
+<!--
+/** 
+ * Slideshow style rules.
+ */
+#slideshow {
+  margin:0 auto;
+  width:900px;
+  height:263px;
+  position:relative;
+}
+#slideshow #slidesContainer {
+  margin:0 auto;
+  width:560px;
+  height:263px;
+  overflow:auto; /* allow scrollbar */
+  position:relative;
+}
+#slideshow #slidesContainer .slide {
+  margin:0 auto;
+  width:540px; /* reduce by 20 pixels of #slidesContainer to avoid horizontal scroll */
+  height:263px;
+}
+
+/** 
+ * Slideshow controls style rules.
+ */
+.control {
+  display:block;
+  width:39px;
+  height:263px;
+  text-indent:-10000px;
+  position:absolute;
+  cursor: pointer;
+}
+#leftControl {
+  top:0;
+  left:0;
+  background:transparent url({{ MEDIA_URL }}img/control_left.jpg) no-repeat 0 0;
+}
+#rightControl {
+  top:0;
+  right:0;
+  background:transparent url({{ MEDIA_URL }}img/control_right.jpg) no-repeat 0 0;
+}
+
+
+.slide h2, .slide p {
+  margin:15px;
+}
+.slide h2 {
+  font:italic 24px Georgia, "Times New Roman", Times, serif;
+  color:#ccc;
+  letter-spacing:-1px;
+}
+.slide img {
+  float:right;
+  margin:0 15px;
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  var currentPosition = 0;
+  var slideWidth = 560;
+  var slides = $('.slide');
+  var numberOfSlides = slides.length;
+
+  // Remove scrollbar in JS
+  $('#slidesContainer').css('overflow', 'hidden');
+
+  // Wrap all .slides with #slideInner div
+  slides
+    .wrapAll('<div id="slideInner"></div>')
+    // Float left to display horizontally, readjust .slides width
+  .css({
+      'float' : 'left',
+      'width' : slideWidth
+    });
+
+  // Set #slideInner width equal to total width of all slides
+  $('#slideInner').css('width', slideWidth * numberOfSlides);
+
+  // Insert controls in the DOM
+  $('#slideshow')
+    .prepend('<span class="control" id="leftControl">Clicking moves left</span>')
+    .append('<span class="control" id="rightControl">Clicking moves right</span>');
+
+  // Hide left arrow control on first load
+  manageControls(currentPosition);
+
+  // Create event listeners for .controls clicks
+  $('.control')
+    .bind('click', function(){
+    // Determine new position
+  currentPosition = ($(this).attr('id')=='rightControl') ? currentPosition+1 : currentPosition-1;
+    
+  // Hide / show controls
+    manageControls(currentPosition);
+    // Move slideInner using margin-left
+    $('#slideInner').animate({
+      'marginLeft' : slideWidth*(-currentPosition)
+    });
+  });
+
+  // manageControls: Hides and Shows controls depending on currentPosition
+  function manageControls(position){
+    // Hide left arrow if position is first slide
+  if(position==0){ $('#leftControl').hide() } else{ $('#leftControl').show() }
+  // Hide right arrow if position is last slide
+    if(position==numberOfSlides-1){ $('#rightControl').hide() } else{ $('#rightControl').show() }
+  } 
+});
+</script>
 </head>
 
 <body>
@@ -68,33 +183,23 @@
 		</div>
 	</div>
 
-	<div id="splash">
-		<div class="col3 left">
-			<h2 class="label label-green">We will talk about</h2>
-			<ul class="nice-list">
-			<li>Python</li>
-			<li>Django and other webframeworks</li>
-			<li>SQL and NoSQL databases</li>
-			<li>GIS</li>
-			<li>Highload</li>
-			<li>and many others</li>
-			</ul>
-		</div>
-		<div class="col3-mid left">
-			<h2 class="label label-orange">Speakers</h2>
-			<p class="quiet large">Yury Yurevich</p>
-			<p><img src="{{MEDIA_URL}}images/people/yurevich.jpg" alt="" class="bordered" /></p>
-			<p><em></em></p>
-		</div>
-
-		<div class="col3 right">
-			<h2 class="label label-blue">Calendar</h2>
-            <ul class="nice-list">
-            <li>September 30 - Deadline for proposals.</li>
-            <li>October 15 - Finalization of schedule</li>
-            <li>October 22 - Pre-party :)</li>
-            </ul>
-		</div>
+	 <div id="splash">
+	 <div class="section-title">Speakers</div>
+	 {% block speakers %}
+		<div id="slideshow">
+      <div id="slidesContainer">
+      {% for speaker in speakers %}
+        <div class="slide">
+          <h2>{{ speaker.name }}</h2>
+          <p>
+          <img src="{{ MEDIA_URL }}{{ speaker.photo }}" alt="{{ speaker.name }}" width="215" height="145" />
+          {{ speaker.bio|safe }}
+          </p>
+        </div>
+      {% endfor %}      
+     </div>
+    </div>
+   {% endblock %}
 		<div class="clearer">&nbsp;</div>
 	</div>
 	<div class="main" id="main-two-columns">
@@ -107,7 +212,7 @@
 					{% for news in last_news %}
                     <div class="post">
                         <div class="post-title"><h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2></div>
-                        {% comment %}<div class="post-date">{{ news.created|date:"D, d M, Y" }} by {{ news.author.first_name }} {{ news.author.last_name }}</div>{% endcomment %}
+                        <div class="post-date">{{ news.created|date:"D, d M, Y" }} by {{ news.author.first_name }} {{ news.author.last_name }}</div>
                         <div class="post-body">
                             <p>{{ news.short|safe }}</p>
 							<br />
@@ -176,7 +281,23 @@
 								</a>
 							</div>
                             <div class="clearer">&nbsp;</div>
-                        </li>						
+                        </li>		
+             <li>
+                            <h3>Gold sponsor:</h3>                         
+                            <div class="left">
+                                <a href="http://www.github.com">
+                                  <img src="{{ MEDIA_URL }}sponsors/github.png" alt="oDesk" />
+                </a>
+              </div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>  
+ <li>
+                            <h3>Silver sponsor:</h3>                            
+                            <div class="left"><a href="http://42coffeecups.com">
+                                <img src="{{ MEDIA_URL }}sponsors/42-logo.png" alt="42coffeecups" />
+                            </a></div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>                                                  				
 						<li>
                             <h3>Bronze sponsor:</h3>							
 							<div class="left"><a href="http://www.python.org/psf/">
@@ -184,13 +305,7 @@
 							</a></div>
 							<div class="clearer">&nbsp;</div>
 						</li>
-                        <li>
-                            <h3>Bronze sponsor:</h3>                            
-                            <div class="left"><a href="http://42coffeecups.com">
-                                <img src="{{ MEDIA_URL }}sponsors/42-logo.png" alt="42coffeecups" />
-                            </a></div>
-                            <div class="clearer">&nbsp;</div>
-                        </li>	
+                       
                         <li>
                             <h3>Partner:</h3> 
                             <div class="left"><a href="http://www.programa.pl/">
