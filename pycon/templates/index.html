@@ -56,7 +56,7 @@
 .control {
   display:block;
   width:39px;
-  height:263px;
+  height:280px;
   text-indent:-10000px;
   position:absolute;
   cursor: pointer;
@@ -192,7 +192,7 @@ $(document).ready(function(){
         <div class="slide">
           <h2>{{ speaker.name }}</h2>
           <p>
-          <img src="{{ MEDIA_URL }}{{ speaker.photo }}" alt="{{ speaker.name }}" width="215" height="145" />
+          <img src="{{ MEDIA_URL }}{{ speaker.photo }}" alt="{{ speaker.name }}" />
           {{ speaker.bio|safe }}
           </p>
         </div>
