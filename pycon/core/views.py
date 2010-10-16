@@ -210,3 +210,11 @@ def news(request, pk):
     news = get_object_or_404(News, pk=pk)
     speakers = Speaker.objects.all()
     return {'news': news, 'speakers': speakers}
+
+
+@render_to('talks.html')
+def talks(request):
+    talks = Talks.objects.all().order_by('-ordering')
+    speakers = Speaker.objects.all()
+    return {'talks':talks, 
+            'speakers': speakers}

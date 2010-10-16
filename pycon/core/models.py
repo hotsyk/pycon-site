@@ -11,7 +11,8 @@ class Page(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     
-    
+    def __unicode(self):
+        return self.title    
 
 class News(models.Model):
     
@@ -27,7 +28,8 @@ class News(models.Model):
     def get_absolute_url(self):
         return reverse('news', args=[self.pk])
     
-    
+    def __unicode__(self):
+        return self.title    
     
 class Speaker(models.Model):
     
@@ -42,6 +44,8 @@ class Speaker(models.Model):
     
     comments = models.TextField(blank=True, null=True)
     
+    def __unicode__(self):
+        return self.name    
     
 class CFPProfile(models.Model):
     CFP_TYPE_CHOICES = (('L', 'Lightning talk'),
@@ -179,4 +183,15 @@ class ParticipanProfile(models.Model):
         return self.ticket_barcode != '' or ((self.pycon_speaker or\
          self.pykyiv_speaker or self.invited_speaker or self.organizator or\
          self.help_team or self.sponsor_participant or\
-         self.paid_bezgotivka or self.paid_gotivka) and self.confirmed_free)   
+         self.paid_bezgotivka or self.paid_gotivka) and self.confirmed_free)
+        
+        
+        
+class Talks(models.Model):
+    title = models.CharField(max_length=255)
+    authors = models.ManyToManyField(Speaker, null=True, blank=True)
+    abstract = models.TextField(null=True, blank=True)
+    ordering = models.IntegerField(default=0)
+    
+    def __unicode__(self):
+        return self.title

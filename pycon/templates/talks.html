@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load thumbnail %}
+{% block menu %}
+        <li><a href="/">News and updates</a></li>
+        <li  class="current-tab"><a href="/talks">Talks</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+            <li><a href=".">Registration</a></li>
+                    <li><a href="/login">Login</a></li>
+                {% endif %}       
+{% endblock %}
+{% block main %}
+<div class="section">
+	
+	<div class="section-title"></div>
+	<div class="section-content">
+		{% for talk in talks %}
+        <div class="post">
+            <div class="post-title"><h2> {{ talk.title }}</h2></div>
+            <div class="post-body">
+              {{ talk.abstract|safe }}<br /><br />
+            </div>
+						<div class="post-authors">
+              {% for speaker in talk.authors.all %}
+                {{ speaker.name }}<br />
+								{% thumbnail speaker.photo 100x50 %}<br />
+								{{ speaker.bio|safe }}             
+              {% endfor %}
+						</div>
+        </div>
+				<hr />
+		{% endfor %}      					
+		<div class="clearer">&nbsp;</div>
+	</div>
+</div>
+{% endblock %}
