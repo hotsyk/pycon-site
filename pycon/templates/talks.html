@@ -26,7 +26,7 @@
               {% for speaker in talk.authors.all %}
 								<img src="{% thumbnail speaker.photo 100x50 %}" align="left" style="padding:0 5px 0 5px;"/>
 								{{ speaker.name }}<br />
-								{{ speaker.bio|safe }}             
+								{{ speaker.bio|safe }}<br /><br />             
               {% endfor %}
 						</div>
         </div>
