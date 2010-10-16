@@ -367,6 +367,11 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 .post-body img.left, .post-body img.right {margin-bottom: 1em;}
 
+.post-authors {font-size: 0.8em;}
+.post-authors a {color: #039;}
+.post-authors a:hover {color: #039;}
+
+.post-authors img.left, .post-body img.right {margin-bottom: 1em;}
 
 /* Archives */
 .archive-pagination {
