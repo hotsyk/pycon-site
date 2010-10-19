@@ -157,7 +157,6 @@ $(document).ready(function(){
 				<li><a href="/talks">Talks</a></li>
 				{% if user.is_authenticated %}
                     <li><a href="/profile">Profile</a></li>
-					<li><a href="/cfpsubmit">Submit proposal</a></li>
                     <li><a href="/logout">Logout</a></li>
                 {% else %}
                     <li><a href="/register/">Registration</a></li>				
@@ -292,7 +291,13 @@ $(document).ready(function(){
 							</a></div>
 							<div class="clearer">&nbsp;</div>
 						</li>
-                       
+                       <li>
+                            <h3>Partner:</h3> 
+                            <div class="left"><a href="http://www.dlink.ru/ua/">
+                                <img src="{{ MEDIA_URL }}sponsors/dlinklogo.gif" alt="Programa.pl" />
+                            </a></div>
+                            <div class="clearer">&nbsp;</div>
+                        </li>
                         <li>
                             <h3>Partner:</h3> 
                             <div class="left"><a href="http://www.programa.pl/">

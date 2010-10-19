@@ -147,6 +147,7 @@ def profile(request):
 @login_required
 @render_to('cfp.html')
 def cfpsubmission(request):
+    return HttpResponseRedirect('/')
     user = request.user
     profile = get_object_or_404(ParticipanProfile, user=user)
     speakers = Speaker.objects.all()
