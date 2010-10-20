@@ -31,6 +31,7 @@ def index(request):
 
 @render_to('register.html')
 def register(request):
+    return HttpResponseRedirect('/')
     if request.user.is_authenticated():
         return HttpResponseRedirect('/profile')
     if request.method == 'POST':
