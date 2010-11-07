@@ -31,7 +31,6 @@ def index(request):
 
 @render_to('register.html')
 def register(request):
-    return HttpResponseRedirect('/')
     if request.user.is_authenticated():
         return HttpResponseRedirect('/profile')
     if request.method == 'POST':
@@ -52,9 +51,9 @@ def register(request):
             #create profile
             profile = ParticipanProfile.objects.create(
                                                        user=user,
-                                                       tshirt_size=form.cleaned_data['tshirt_size'],
-                                                       pre_party=form.cleaned_data['pre_party'],
-                                                       ticket_barcode=form.cleaned_data['ticket_barcode'].strip(),
+                                                       #tshirt_size=form.cleaned_data['tshirt_size'],
+                                                       #pre_party=form.cleaned_data['pre_party'],
+                                                       #ticket_barcode=form.cleaned_data['ticket_barcode'].strip(),
                                                        organization=form.cleaned_data['organization'],
                                                        occupation=form.cleaned_data['occupation'],
                                                        country=form.cleaned_data['country'],
@@ -66,17 +65,20 @@ def register(request):
                                                        blog=form.cleaned_data['blog'],
                                                        linkedin=form.cleaned_data['linkedin'],
                                                        facebook=form.cleaned_data['facebook'],
+                                                       kyivpy1=form.cleaned_data['kyivpy1'],
+                                                       agree=form.cleaned_data['agree'],
+                                                       public=form.cleaned_data['public'],
                                                        )
             profile.verification_code = base64.urlsafe_b64encode(sha1(email+password+str(random.random())+settings.SECRET_KEY).digest())
             profile.save()
             
             #send verification email
-            confirm_link = 'http://ua.pycon.org/confirm/%s' %profile.verification_code
+            confirm_link = 'http://ua.pycon.org/confirm/%s' % profile.verification_code
             context = {'first_name': first_name,
                        'last_name': last_name,
                        'confirm_link': confirm_link,
                        'barcode': profile.ticket_barcode != ''}
-            t = loader.get_template("verification_email.txt")
+            t = loader.get_template("verification_email_new.txt")
             #t2 = loader.get_template("verification_email.html")
             text_content = t.render(Context(context))
             #html_content = t2.render(Context(context))
@@ -123,24 +125,30 @@ def profile(request):
             profile.user.first_name = profile_form.cleaned_data['first_name']
             profile.user.last_name = profile_form.cleaned_data['last_name']
             profile.user.save()
-            profile.tshirt_size = profile_form.cleaned_data['tshirt_size'] 
-            profile.pre_party = profile_form.cleaned_data['pre_party']
-            profile.ticket_barcode = profile_form.cleaned_data['ticket_barcode']
+            #profile.tshirt_size = profile_form.cleaned_data['tshirt_size'] 
+            #profile.pre_party = profile_form.cleaned_data['pre_party']
+            #profile.ticket_barcode = profile_form.cleaned_data['ticket_barcode']
             profile.twitter_name = profile_form.cleaned_data['twitter_name']
             profile.blog = profile_form.cleaned_data['blog']
             profile.linkedin = profile_form.cleaned_data['linkedin']
             profile.facebook = profile_form.cleaned_data['facebook']
+            profile.kyivpy1 = profile_form.cleaned_data['kyivpy1']
+            profile.agree = profile_form.cleaned_data['agree']
+            profile.public = profile_form.cleaned_data['public']
             profile.save()
     else:
         profile_form = ProfileUpdateForm(initial={'first_name': profile.user.first_name,
                                                  'last_name': profile.user.last_name,
-                                                 'tshirt_size': profile.tshirt_size,
-                                                 'pre_party': profile.pre_party,
-                                                 'ticket_barcode': profile.ticket_barcode,
+                                                 #'tshirt_size': profile.tshirt_size,
+                                                 #'pre_party': profile.pre_party,
+                                                 #'ticket_barcode': profile.ticket_barcode,
                                                  'twitter_name': profile.twitter_name,
                                                  'blog': profile.blog,
                                                  'linkedin': profile.linkedin,
-                                                 'facebook': profile.facebook,})
+                                                 'facebook': profile.facebook,
+                                                 'kyivpy1': profile.kyivpy1,
+                                                 'agree': profile.agree,
+                                                 'public': profile.public,})
     speakers = Speaker.objects.all()
     return {'profileform': profile_form, 'completed': profile.is_profile_completed,
             'speakers': speakers}

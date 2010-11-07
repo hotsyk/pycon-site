@@ -8,6 +8,7 @@
 					<li><a href="/cfpsubmit">Submit proposal</a></li>
                     <li><a href="/logout">Logout</a></li>
                 {% else %}
+                    <li><a href="/register/">Registration</a></li>  
                     <li><a href="/login">Login</a></li>
                 {% endif %}				
 {% endblock %}
@@ -19,20 +20,6 @@
 				<div class="section-content">
                     <div class="post">
                     	{% if not error %}
-						
-						<h3 style="background-color:#eee;padding:14px;">
-						{% if not completed %}
-						    Your profile haven't been marked as completed. This means that you cannot vote for CFP.<br />
-							To mark your profile as completed, you need either to enter barcode from your ticket or get a confirmed Free participant status.<br /><br />
-							You can apply for Free participant status if you was the PyCamp Kyiv speaker, if you are participating as organizer or help-team member of the PyCon Ukraine, if your will participate in the conference as the PyCon Ukraine's sponsors employee, if you are invited speaker of the PyCon Ukraine or if your CFP will be choosen for the PyCon Ukraine.<br /><br />
-							To apply for Free participant status, press <a href='/freeparticipantapply'>here.</a><br /><br /> 
-							If you have already bought the ticket, please enter barcode from the ticket below to avoid unexpected delays while registration on the conference and get completed status of the profile.<br /><br />
-							If you haven't bought ticket yet, you can buy it at the <a href='http://www.kvytky.ua/ru/event/8025'>kvytky.ua</a> site or at the <a href='http://www.kvytky.ua/ru/cashiers'>cashiers</a>.<br /><br />
-							If you have troubles with kvytky.ua site or with payments, please feel free to contact us at the <a href='mailto:ticketpycon@hotsyk.com'>email</a> and we will help you.<br />
-						{% else %}
-						  Your profile is completed! 
-						{% endif %}
-						</h3>
                     	<form action="." method='post'>
                     	<table>
                         {% for field in profileform %}

@@ -16,15 +16,18 @@ class ParticipantRegistrationForm(forms.ModelForm):
     
     class Meta:
         model = ParticipanProfile
-        exclude = ('user', 'active', 'verification_code')
+        exclude = ('user', 'active', 'verification_code',  'tshirt_size', 'pre_party', 'ticket_barcode', 'pycon2010')
         fields = ['first_name', 'last_name', 'email', 'password', 'password2',
                   'country', 
                   'city', 'phone', 'python_level',
                   'python_years', 
-                  'tshirt_size', 'pre_party', 'ticket_barcode',
+                  #'tshirt_size', 'pre_party', 'ticket_barcode',
                   'organization', 'occupation', 'twitter_name',
                   'blog', 'linkedin',
-                  'facebook', 'recaptcha' ]
+                  'facebook', 
+                  'kyivpy1',
+                  'agree', 'public'
+                  'recaptcha']
         
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -50,12 +53,13 @@ class ProfileUpdateForm(forms.ModelForm):
     
     class Meta:
         model = ParticipanProfile
-        exclude = ('user', 'active', 'verification_code')
+        exclude = ('user', 'active', 'verification_code',  'tshirt_size', 'pre_party', 'ticket_barcode', 'pycon2010')
         fields = ['first_name', 'last_name',
-                  'tshirt_size', 'pre_party', 'ticket_barcode',
+                 # 'tshirt_size', 'pre_party', 'ticket_barcode',
                   'twitter_name',
                   'blog', 'linkedin',
-                  'facebook', ]
+                  'facebook', 
+                  'kyivpy1', 'agree', 'public']
         
 class CFPSubmissionForm(forms.ModelForm):
     

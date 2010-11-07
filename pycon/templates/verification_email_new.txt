@@ -1,0 +1,16 @@
+Dear {{ first_name }} {{ last_name }}
+
+This is automatic email from the http://ua.pycon.org site to confirm email address used while the registration.
+
+To verify your email address, please follow the next link:
+
+{{ confirm_link }}
+
+If you haven't registered at the http://ua.pycon.org site, please just ignore this email.
+
+If you have troubles while trying to confirm registration, please feel free to contact us at the emailtroubles@hotsyk.com
+
+Sincerely,
+Volodymyr Hotsyk,
+PyCon Ukraine organization cometee
++380665600856
