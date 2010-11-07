@@ -83,7 +83,7 @@ def register(request):
             text_content = t.render(Context(context))
             #html_content = t2.render(Context(context))
             
-            subject, from_email, to = 'Confirmation of the registration for the PyCon Ukraine 2010', 'do-not-reply@ua.pycon.org', email
+            subject, from_email, to = 'Confirmation of the registration on the ua.pycon.org site', 'do-not-reply@ua.pycon.org', email
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
             #msg.attach_alternative(html_content, "text/html")
             msg.send()
