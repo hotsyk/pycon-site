@@ -26,7 +26,7 @@ class ParticipantRegistrationForm(forms.ModelForm):
                   'blog', 'linkedin',
                   'facebook', 
                   'kyivpy1',
-                  'agree', 'public'
+                  'agree', 'public',
                   'recaptcha']
         
     def clean_email(self):
