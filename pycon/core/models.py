@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from sorl.thumbnail.fields import ImageWithThumbnailsField
+from sorl.thumbnail.fields import ImageField
 from django.core.urlresolvers import reverse
 
           
@@ -34,8 +34,7 @@ class News(models.Model):
 class Speaker(models.Model):
     
     name = models.CharField(max_length=255)
-    photo = ImageWithThumbnailsField(upload_to='profiles',
-                                     thumbnail={'size': (50, 50)})
+    photo = ImageField(upload_to='profiles',)
     
     bio = models.TextField(blank=True, null=True)       
     email = models.EmailField(blank=True, null=True)
@@ -102,8 +101,7 @@ class CFPProfile(models.Model):
     abstract = models.TextField(help_text='Abstract description of your talk.')
     brief_biography = models.TextField(help_text='Tell us about yourself. This is a community conference, so no need to be shy!')
     comments = models.TextField(blank=True, null=True, help_text="Also enter here the name and email of co-presenter if any. Email should be the email he or she used while registration.")
-    photo = ImageWithThumbnailsField(help_text="Your photo", upload_to='cfp',
-                                     thumbnail={'size': (50, 50)})
+    photo = ImageField(help_text="Your photo", upload_to='cfp')
     inrating = models.BooleanField(default=True)
     
 class Country(models.Model):
