@@ -13,7 +13,7 @@ class Command(BaseCommand):
             context = {'user': participant.user}
             t = loader.get_template("email-kyivpy1.html")
             text_content = t.render(Context(context))
-            subject, from_email, to = 'Kyiv.py reminder (#uapycon)',\
+            subject, from_email, to = 'Kyiv.py reminder: IMPORTANT UPDATE (#uapycon)',\
                                 'do-not-reply@ua.pycon.org', participant.user.email
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
             msg.send()
