@@ -65,7 +65,7 @@ def register(request):
                                                        blog=form.cleaned_data['blog'],
                                                        linkedin=form.cleaned_data['linkedin'],
                                                        facebook=form.cleaned_data['facebook'],
-                                                       kyivpy1=form.cleaned_data['kyivpy1'],
+                                                       kyivpy2=form.cleaned_data['kyivpy2'],
                                                        agree=form.cleaned_data['agree'],
                                                        public=form.cleaned_data['public'],
                                                        )
@@ -132,7 +132,7 @@ def profile(request):
             profile.blog = profile_form.cleaned_data['blog']
             profile.linkedin = profile_form.cleaned_data['linkedin']
             profile.facebook = profile_form.cleaned_data['facebook']
-            profile.kyivpy1 = profile_form.cleaned_data['kyivpy1']
+            profile.kyivpy2 = profile_form.cleaned_data['kyivpy2']
             profile.agree = profile_form.cleaned_data['agree']
             profile.public = profile_form.cleaned_data['public']
             profile.save()
@@ -146,7 +146,7 @@ def profile(request):
                                                  'blog': profile.blog,
                                                  'linkedin': profile.linkedin,
                                                  'facebook': profile.facebook,
-                                                 'kyivpy1': profile.kyivpy1,
+                                                 'kyivpy2': profile.kyivpy2,
                                                  'agree': profile.agree,
                                                  'public': profile.public,})
     speakers = Speaker.objects.all()
