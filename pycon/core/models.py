@@ -177,6 +177,7 @@ class ParticipanProfile(models.Model):
     orgcomments = models.TextField(blank=True, null=True)
     pycon2010 = models.BooleanField(default=False)
     kyivpy1 = models.BooleanField("I'd like to participate in the Kyiv.py #1 meetup", default=False)
+    kyivpy2 = models.BooleanField("I'd like to participate in the Kyiv.py #2 meetup", default=False)
     agree = models.BooleanField("I'd like to get emails about news and new events from the organization cometee ", default=False)
     public = models.BooleanField("I am agree to make my profile public visible ", default=False)
     
